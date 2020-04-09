@@ -11,7 +11,7 @@ This repository provides our implementation of fine-tuning for BLUE benchmark wi
 1. Set pre-trained models. For example, [BioBERT](https://github.com/dmis-lab/biobert), [clinicalBERT](https://github.com/EmilyAlsentzer/clinicalBERT), [SciBERT](https://github.com/allenai/scibert), [BlueBERT](https://github.com/ncbi-nlp/bluebert) and so on.
 1. Try to use our code in [utils](./utils). Examples of the command can be found in [scripts](./scripts).
 ### Tips
-If you download Tensorflow Models, converting to PyTorch ones comforts your fine-tuning.  
+If you download Tensorflow models, converting to PyTorch ones comforts your fine-tuning.  
 [Converting Tensorflow Checkpoints](https://huggingface.co/transformers/converting_tensorflow_models.html)
 ```bash
 export BERT_BASE_DIR=/path/to/bert/uncased_L-12_H-768_A-12
