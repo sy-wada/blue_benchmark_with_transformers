@@ -48,6 +48,10 @@ transformers-cli convert --model_type bert \
 ## Inference task
 ### MedNLI
 
+## Acknowledgments
+We are grateful to the authors of BERT to make the data and codes publicly available. We thank the NVIDIA team because their implimentation of BERT for PyTorch enables us to train our BERT models. I would also like to take this opportunity to thank Yifan Peng for providing BLUE benchmark.
+This work was supported by Council for Science, Technology and Innovation (CSTI), cross-ministerial Strategic Innovation Promotion Program (SIP), "Innovative AI Hospital System" (Funding Agency: National Instisute of Biomedical Innovation, Health and Nutrition (NIBIOHN)).
+
 ## References
 - <a id="ypeng"></a>Peng Y, Yan S, Lu Z. [Transfer Learning in Biomedical Natural Language Processing: An
 Evaluation of BERT and ELMo on Ten Benchmarking Datasets](https://arxiv.org/abs/1906.05474). In *Proceedings of the Workshop on Biomedical Natural Language Processing (BioNLP)*. 2019.
