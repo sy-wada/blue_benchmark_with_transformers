@@ -14,7 +14,7 @@ export CUDA_VISIBLE_DEVICES=0 # means n_gpu=1
   --do_lower_case \
   --fp16
 ```
-Only in [BIOSSES](#BIOSSES), we gave multiple seeds.  
+Only in [BIOSSES](#BIOSSES), we run it with multiple seeds.  
 
 
 Please change the following variables to suit your environment:  
@@ -40,8 +40,8 @@ python $CODE_DIR/utils/run_sts.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/medsts
-  --learning_rate= \
-  --num_train_epochs= \
+  --learning_rate=5e-5 \
+  --num_train_epochs=9 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -70,8 +70,8 @@ python $CODE_DIR/utils/run_sts.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/biosses
-  --learning_rate= \
-  --num_train_epochs= \
+  --learning_rate=5e-5 \
+  --num_train_epochs=50 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -79,7 +79,7 @@ python $CODE_DIR/utils/run_sts.py \
   --per_gpu_train_batch_size=32 \
   --per_gpu_eval_batch_size=32 \
   --gradient_accumulation_steps=1 \
-  --seed=12 \
+  --seed=16 \
   --do_lower_case \
   --fp16
 ```
@@ -100,8 +100,8 @@ python $CODE_DIR/utils/run_ner.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/bc5cdr_disease
-  --learning_rate= \
-  --num_train_epochs= \
+  --learning_rate=2e-5 \
+  --num_train_epochs=20 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -123,8 +123,8 @@ python $CODE_DIR/utils/run_ner.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/bc5cdr_chem
-  --learning_rate= \
-  --num_train_epochs= \
+  --learning_rate=4e-5 \
+  --num_train_epochs=30 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -146,8 +146,8 @@ python $CODE_DIR/utils/run_ner.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/clefe
-  --learning_rate= \
-  --num_train_epochs= \
+  --learning_rate=2e-5 \
+  --num_train_epochs=30 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -175,8 +175,8 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/ddi2013
-  --learning_rate= \
-  --num_train_epochs= \
+  --learning_rate=2e-5 \
+  --num_train_epochs=6 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -198,8 +198,8 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/chemprot
-  --learning_rate= \
-  --num_train_epochs= \
+  --learning_rate=5e-5 \
+  --num_train_epochs=5 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -221,8 +221,8 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/i2b2_2010
-  --learning_rate= \
-  --num_train_epochs= \
+  --learning_rate=1e-5 \
+  --num_train_epochs=10 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -252,8 +252,8 @@ python $CODE_DIR/utils/run_multi_label_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/hoc
-  --learning_rate= \
-  --num_train_epochs= \
+  --learning_rate=4e-5 \
+  --num_train_epochs=10 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -282,8 +282,8 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/mednli
-  --learning_rate= \
-  --num_train_epochs= \
+  --learning_rate=3e-5 \
+  --num_train_epochs=10 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
