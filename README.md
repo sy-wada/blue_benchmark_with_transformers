@@ -72,8 +72,23 @@ Note: Some of the figures in the table above may differ from those in [the refer
 ## Relation extraction
 
 ### DDI
+| class        | Train |  Dev |  Test | note   |
+|--------------|------:|-----:|------:|:-------|
+|DDI-advise    |   633 |  193 |   221 |        |
+|DDI-effect    |  1212 |  396 |   360 |        |
+|DDI-int       |   146 |   42 |    96 |        |
+|DDI-mechanism |   946 |  373 |   302 |        |
+|DDI-false     | 15842 | 6240 |  4782 |        |
 
 ### ChemProt
+| class | Train |  Dev |  Test | note   |
+|-------|------:|-----:|------:|:-------|
+|CPR:3  |   768 |  550 |   665 |        |
+|CPR:4  |  2251 | 1094 |  1661 |        |
+|CPR:5  |   173 |  116 |   195 |        |
+|CPR:6  |   235 |  199 |   293 |        |
+|CPR:9  |   727 |  457 |   644 |        |
+|false  | 15306 | 9404 | 13485 |        |
 
 ### i2b2 2010
 | class | Train |  Dev |  Test | note   |
