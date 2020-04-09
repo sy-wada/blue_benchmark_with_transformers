@@ -105,18 +105,18 @@ Note: Some of the figures in the table above may differ from those in [the refer
 
 ## Document multilabel classification
 ### HoC
-| label                              | Train |  Dev |  Test |
-|------------------------------------|------:|-----:|------:|
-|activating invasion and metastasis  |   458 |   71 |   138 |
-|avoiding immune destruction         |   148 |   33 |    45 |
-|cellular energetics                 |   164 |   14 |    35 |
-|enabling replicative immortality    |   213 |   30 |    52 |
-|evading growth suppressors          |   264 |   34 |    70 |
-|genomic instability and mutation    |   563 |   58 |   150 |
-|inducing angiogenesis               |   238 |   39 |    80 |
-|resisting cell death                |   596 |   92 |   145 |
-|sustaining proliferative signaling  |   723 |   86 |   184 |
-|tumor promoting inflammation        |   346 |   55 |   119 |
+| label                                 | Train |  Dev |  Test |
+|---------------------------------------|------:|-----:|------:|
+|0. activating invasion and metastasis  |   458 |   71 |   138 |
+|1. avoiding immune destruction         |   148 |   33 |    45 |
+|2. cellular energetics                 |   164 |   14 |    35 |
+|3. enabling replicative immortality    |   213 |   30 |    52 |
+|4. evading growth suppressors          |   264 |   34 |    70 |
+|5. genomic instability and mutation    |   563 |   58 |   150 |
+|6. inducing angiogenesis               |   238 |   39 |    80 |
+|7. resisting cell death                |   596 |   92 |   145 |
+|8. sustaining proliferative signaling  |   723 |   86 |   184 |
+|9. tumor promoting inflammation        |   346 |   55 |   119 |
 
 Note: This table shows the number of each label on the sentence level, rather than on the abstract level.
 - **Train**: sentences: 10527/ articles: 1108
