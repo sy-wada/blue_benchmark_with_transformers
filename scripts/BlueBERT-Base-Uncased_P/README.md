@@ -28,7 +28,7 @@ Please change the following variables to suit your environment:
 - [Named Entity Recognition](#named-entity-recognition)
   * [BC5CDR-disease](#bc5cdr-disease)
   * [BC5CDR-chemical](#bc5cdr-chemical)
-  * [ShARe/CLEFE](#share-clefe)
+  * [ShARe/CLEFE](#shareclefe)
 - [Relation Extraction](#relation-extraction)
   * [DDI](#ddi)
   * [ChemProt](#chemprot)
