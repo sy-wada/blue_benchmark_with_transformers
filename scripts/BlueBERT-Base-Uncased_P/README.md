@@ -11,6 +11,7 @@ export CUDA_VISIBLE_DEVICES=0 # means n_gpu=1
   --per_gpu_eval_batch_size=32 \
   --gradient_accumulation_steps=1 \
   --seed=12 \
+  --do_lower_case \
   --fp16
 ```
 Please change the following variables to suit your environment:  
