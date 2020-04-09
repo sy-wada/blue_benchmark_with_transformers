@@ -14,7 +14,7 @@ export CUDA_VISIBLE_DEVICES=0 # means n_gpu=1
   --do_lower_case \
   --fp16
 ```
-Only in [BIOSSES](#BIOSSES), we run it with multiple seeds.  
+Only in [BIOSSES](#biosses), we run it with multiple seeds.  
 
 
 Please change the following variables to suit your environment:  
