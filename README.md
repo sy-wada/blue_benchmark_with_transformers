@@ -1,4 +1,4 @@
-# BLUE Benchmark with transformers
+# BLUE Benchmark with Transformers
 
 **\*\*\*\*\* New April th, 2020: released \*\*\*\*\***
 
