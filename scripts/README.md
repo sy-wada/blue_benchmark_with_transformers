@@ -5,6 +5,9 @@ Please keep in mind that different environments may produce different results fr
 
 |model|comment|
 |:----|:------|
-|model|describe|
+|[BlueBERT-Base, Uncased, PubMed](./BlueBERT-Base-Uncased_P)|Peng Y, Yan S, Lu Z. [Transfer Learning in Biomedical Natural Language Processing: An Evaluation of BERT and ELMo on Ten Benchmarking Datasets](https://arxiv.org/abs/1906.05474). In *Proceedings of the Workshop on Biomedical Natural Language Processing (BioNLP)*. 2019.|
 
-[link](./BlueBERT-Base-Uncased_P)
+本文[^anchor]
+
+[^anchor]: 脚注
+補文
