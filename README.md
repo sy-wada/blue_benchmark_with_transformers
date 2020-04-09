@@ -1,9 +1,12 @@
 # BLUE Benchmark with transformers
-Biomedical Language Understanding Evaluation (BLUE) benchmark is a collection of resources for evaluating and analyzing biomedical
-natural language representation models ([Peng et al., 2019](#ypeng)).  
-We implement fine-tuning for BLUE benchmark with [🤗Transformers](https://github.com/huggingface/transformers) and release it here.
+
+**\*\*\*\*\* New April th, 2020: released \*\*\*\*\***
 
 -----  
+Biomedical Language Understanding Evaluation (BLUE) benchmark is a collection of resources for evaluating and analyzing biomedical
+natural language representation models ([Peng et al., 2019](#ypeng)).  
+This repository provides our implementation of fine-tuning for BLUE benchmark with [🤗Transformers](https://github.com/huggingface/transformers).
+
 ## Sentence similarity
 ### MedSTS
 
