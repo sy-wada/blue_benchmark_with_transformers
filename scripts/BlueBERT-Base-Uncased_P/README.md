@@ -15,8 +15,9 @@ export CUDA_VISIBLE_DEVICES=0 # means n_gpu=1
   --fp16
 ```
 Only in [BIOSSES](#BIOSSES), we give multiple seeds.  
-Please change the following variables to suit your environment:  
 
+
+Please change the following variables to suit your environment:  
 `$CODE_DIR`: where you downloaded this repository  
 `$DATASET_DIR`: a dataset directory for each task  
 `$MODEL_DIR`: where the pre-trained model is saved  
@@ -31,17 +32,70 @@ Please change the following variables to suit your environment:
 
 Table: Parameter Candidates Used for Grid Search of MedSTS
 ### BIOSSES
+| parameter | candidates |
+|:----|:----|
+| **epochs** | 10, 20, 30, 40, 50 |
+| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
+| **seed** | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 |
 
-Table: タイトル{#tbl:id}
+Table: Parameter Candidates Used for Grid Search of BIOSSES
 ## Named Entity Recognition
 ### BC5CDR-disease
+| parameter | candidates |
+|:----|:----|
+| **epochs** | 10, 20, 30 |
+| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
+
+Table: Parameter Candidates Used for Grid Search of BC5CDR-disease
 ### BC5CDR-chemical
+| parameter | candidates |
+|:----|:----|
+| **epochs** | 10, 20, 30 |
+| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
+
+Table: Parameter Candidates Used for Grid Search of BC5CDR-chemical
 ### ShARe/CLEFE
+| parameter | candidates |
+|:----|:----|
+| **epochs** | 10, 20, 30 |
+| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
+
+Table: Parameter Candidates Used for Grid Search of ShARe/CLEFE
 ## Relation Extraction
 ### DDI
+| parameter | candidates |
+|:----|:----|
+| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10 |
+| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
+
+Table: Parameter Candidates Used for Grid Search of DDI
 ### ChemProt
-### i2b2 2020
+| parameter | candidates |
+|:----|:----|
+| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10 |
+| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
+
+Table: Parameter Candidates Used for Grid Search of ChemProt
+### i2b2 2010
+| parameter | candidates |
+|:----|:----|
+| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10 |
+| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
+
+Table: Parameter Candidates Used for Grid Search of i2b2 2010
 ## Document multilabel classification
 ### HoC
+| parameter | candidates |
+|:----|:----|
+| **epochs** | 5, 10, 15, 20 |
+| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
+
+Table: Parameter Candidates Used for Grid Search of HoC
 ## Inference task
 ### MedNLI
+| parameter | candidates |
+|:----|:----|
+| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10, 15 |
+| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
+
+Table: Parameter Candidates Used for Grid Search of MedNLI
