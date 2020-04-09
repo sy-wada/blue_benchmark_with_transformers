@@ -9,7 +9,7 @@ This repository provides our implementation of fine-tuning for BLUE benchmark wi
 ## Preparations
 1. Download the benchmark dataset from https://github.com/ncbi-nlp/BLUE_Benchmark
 1. Set pre-trained models. For example, [BioBERT](https://github.com/dmis-lab/biobert), [clinicalBERT](https://github.com/EmilyAlsentzer/clinicalBERT), [SciBERT](https://github.com/allenai/scibert), [BlueBERT](https://github.com/ncbi-nlp/bluebert) and so on.
-
+1. Try to use our code. Examples of the command can be found in [script](./script).
 
 ## Sentence similarity
 ### MedSTS
