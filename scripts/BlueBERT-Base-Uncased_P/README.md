@@ -21,7 +21,22 @@ Please change the following variables to suit your environment:
 `$CODE_DIR`: where you downloaded this repository  
 `$DATASET_DIR`: a dataset directory for each task  
 `$MODEL_DIR`: where the pre-trained model is saved  
-
+## Table of Contents
+- [Sentence similarity](#sentence-similarity)
+  * [MedSTS](#medsts)
+  * [BIOSSES](#biosses)
+- [Named Entity Recognition](#named-entity-recognition)
+  * [BC5CDR-disease](#bc5cdr-disease)
+  * [BC5CDR-chemical](#bc5cdr-chemical)
+  * [ShARe/CLEFE](#share-clefe)
+- [Relation Extraction](#relation-extraction)
+  * [DDI](#ddi)
+  * [ChemProt](#chemprot)
+  * [i2b2 2010](#i2b2-2010)
+- [Document multilabel classification](#document-multilabel-classification)
+  * [HoC](#hoc)
+- [Inference task](#inference-task)
+  * [MedNLI](#mednli)
 -----  
 ## Sentence similarity
 ### MedSTS
