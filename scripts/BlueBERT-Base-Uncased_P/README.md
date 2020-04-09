@@ -14,7 +14,7 @@ export CUDA_VISIBLE_DEVICES=0 # means n_gpu=1
   --do_lower_case \
   --fp16
 ```
-Only in [BIOSSES](#BIOSSES), we give multiple seeds.  
+Only in [BIOSSES](#BIOSSES), we gave multiple seeds.  
 
 
 Please change the following variables to suit your environment:  
@@ -30,7 +30,29 @@ Please change the following variables to suit your environment:
 | **epochs** | 3, 4, 5, 6, 7, 8, 9, 10, 15 |
 | **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
 
-Table: Parameter Candidates Used for Grid Search of MedSTS
+Table: Parameter Candidates Used for Grid Search of MedSTS.
+```bash
+python $CODE_DIR/utils/run_sts.py \
+  --do_train \
+  --do_eval \
+  --do_predict \
+  --task_name=medsts \
+  --data_dir=$DATASET_DIR \
+  --model_name_or_path=$MODEL_DIR \
+  --output_dir=./output/medsts
+  --learning_rate= \
+  --num_train_epochs= \
+  --logging_steps=0 \
+  --save_steps=0 \
+  --model_type=bert \
+  --max_seq_length=128 \
+  --per_gpu_train_batch_size=32 \
+  --per_gpu_eval_batch_size=32 \
+  --gradient_accumulation_steps=1 \
+  --seed=12 \
+  --do_lower_case \
+  --fp16
+```
 ### BIOSSES
 | parameter | candidates |
 |:----|:----|
@@ -38,51 +60,180 @@ Table: Parameter Candidates Used for Grid Search of MedSTS
 | **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
 | **seed** | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,<br> 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,<br> 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 |
 
-Table: Parameter Candidates Used for Grid Search of BIOSSES
+Table: Parameter Candidates Used for Grid Search of BIOSSES.
+```bash
+python $CODE_DIR/utils/run_sts.py \
+  --do_train \
+  --do_eval \
+  --do_predict \
+  --task_name=biosses \
+  --data_dir=$DATASET_DIR \
+  --model_name_or_path=$MODEL_DIR \
+  --output_dir=./output/biosses
+  --learning_rate= \
+  --num_train_epochs= \
+  --logging_steps=0 \
+  --save_steps=0 \
+  --model_type=bert \
+  --max_seq_length=128 \
+  --per_gpu_train_batch_size=32 \
+  --per_gpu_eval_batch_size=32 \
+  --gradient_accumulation_steps=1 \
+  --seed=12 \
+  --do_lower_case \
+  --fp16
+```
 ## Named Entity Recognition
+| parameter | candidates |
+|:----|:----|
+| **epochs** | 10, 20, 30 |
+| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
+
+Table: Parameter Candidates Used for Grid Search of BC5CDR-disease, BC5CDR-chemical and ShARe/CLEFE.
 ### BC5CDR-disease
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 10, 20, 30 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of BC5CDR-disease
+```bash
+python $CODE_DIR/utils/run_ner.py \
+  --do_train \
+  --do_eval \
+  --do_predict \
+  --task_name=bc5cdr \
+  --data_dir=$DATASET_DIR \
+  --model_name_or_path=$MODEL_DIR \
+  --output_dir=./output/bc5cdr_disease
+  --learning_rate= \
+  --num_train_epochs= \
+  --logging_steps=0 \
+  --save_steps=0 \
+  --model_type=bert \
+  --max_seq_length=128 \
+  --per_gpu_train_batch_size=32 \
+  --per_gpu_eval_batch_size=32 \
+  --gradient_accumulation_steps=1 \
+  --seed=12 \
+  --do_lower_case \
+  --fp16
+```
 ### BC5CDR-chemical
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 10, 20, 30 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of BC5CDR-chemical
+```bash
+python $CODE_DIR/utils/run_ner.py \
+  --do_train \
+  --do_eval \
+  --do_predict \
+  --task_name=bc5cdr \
+  --data_dir=$DATASET_DIR \
+  --model_name_or_path=$MODEL_DIR \
+  --output_dir=./output/bc5cdr_chem
+  --learning_rate= \
+  --num_train_epochs= \
+  --logging_steps=0 \
+  --save_steps=0 \
+  --model_type=bert \
+  --max_seq_length=128 \
+  --per_gpu_train_batch_size=32 \
+  --per_gpu_eval_batch_size=32 \
+  --gradient_accumulation_steps=1 \
+  --seed=12 \
+  --do_lower_case \
+  --fp16
+```
 ### ShARe/CLEFE
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 10, 20, 30 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of ShARe/CLEFE
+```bash
+python $CODE_DIR/utils/run_ner.py \
+  --do_train \
+  --do_eval \
+  --do_predict \
+  --task_name=clefe \
+  --data_dir=$DATASET_DIR \
+  --model_name_or_path=$MODEL_DIR \
+  --output_dir=./output/clefe
+  --learning_rate= \
+  --num_train_epochs= \
+  --logging_steps=0 \
+  --save_steps=0 \
+  --model_type=bert \
+  --max_seq_length=128 \
+  --per_gpu_train_batch_size=32 \
+  --per_gpu_eval_batch_size=32 \
+  --gradient_accumulation_steps=1 \
+  --seed=12 \
+  --do_lower_case \
+  --fp16
+```
 ## Relation Extraction
+| parameter | candidates |
+|:----|:----|
+| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10 |
+| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
+Table: Parameter Candidates Used for Grid Search of DDI, ChemProt and i2b2 2010.
 ### DDI
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of DDI
+```bash
+python $CODE_DIR/utils/run_multi_class_classifier.py \
+  --do_train \
+  --do_eval \
+  --do_predict \
+  --task_name=ddi2013 \
+  --data_dir=$DATASET_DIR \
+  --model_name_or_path=$MODEL_DIR \
+  --output_dir=./output/ddi2013
+  --learning_rate= \
+  --num_train_epochs= \
+  --logging_steps=0 \
+  --save_steps=0 \
+  --model_type=bert \
+  --max_seq_length=128 \
+  --per_gpu_train_batch_size=32 \
+  --per_gpu_eval_batch_size=32 \
+  --gradient_accumulation_steps=1 \
+  --seed=12 \
+  --do_lower_case \
+  --fp16
+```
 ### ChemProt
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of ChemProt
+```bash
+python $CODE_DIR/utils/run_multi_class_classifier.py \
+  --do_train \
+  --do_eval \
+  --do_predict \
+  --task_name=chemprot \
+  --data_dir=$DATASET_DIR \
+  --model_name_or_path=$MODEL_DIR \
+  --output_dir=./output/chemprot
+  --learning_rate= \
+  --num_train_epochs= \
+  --logging_steps=0 \
+  --save_steps=0 \
+  --model_type=bert \
+  --max_seq_length=128 \
+  --per_gpu_train_batch_size=32 \
+  --per_gpu_eval_batch_size=32 \
+  --gradient_accumulation_steps=1 \
+  --seed=12 \
+  --do_lower_case \
+  --fp16
+```
 ### i2b2 2010
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of i2b2 2010
+```bash
+python $CODE_DIR/utils/run_multi_class_classifier.py \
+  --do_train \
+  --do_eval \
+  --do_predict \
+  --task_name=i2b2_2010 \
+  --data_dir=$DATASET_DIR \
+  --model_name_or_path=$MODEL_DIR \
+  --output_dir=./output/i2b2_2010
+  --learning_rate= \
+  --num_train_epochs= \
+  --logging_steps=0 \
+  --save_steps=0 \
+  --model_type=bert \
+  --max_seq_length=128 \
+  --per_gpu_train_batch_size=32 \
+  --per_gpu_eval_batch_size=32 \
+  --gradient_accumulation_steps=1 \
+  --seed=12 \
+  --do_lower_case \
+  --fp16
+```
 ## Document multilabel classification
 ### HoC
 | parameter | candidates |
@@ -91,6 +242,29 @@ Table: Parameter Candidates Used for Grid Search of i2b2 2010
 | **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
 
 Table: Parameter Candidates Used for Grid Search of HoC
+```bash
+python $CODE_DIR/utils/run_multi_label_classifier.py \
+  --do_train \
+  --do_eval \
+  --do_predict \
+  --output_all_logits \
+  --task_name=hoc \
+  --data_dir=$DATASET_DIR \
+  --model_name_or_path=$MODEL_DIR \
+  --output_dir=./output/hoc
+  --learning_rate= \
+  --num_train_epochs= \
+  --logging_steps=0 \
+  --save_steps=0 \
+  --model_type=bert \
+  --max_seq_length=128 \
+  --per_gpu_train_batch_size=32 \
+  --per_gpu_eval_batch_size=32 \
+  --gradient_accumulation_steps=1 \
+  --seed=12 \
+  --do_lower_case \
+  --fp16
+```
 ## Inference task
 ### MedNLI
 | parameter | candidates |
@@ -99,3 +273,25 @@ Table: Parameter Candidates Used for Grid Search of HoC
 | **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
 
 Table: Parameter Candidates Used for Grid Search of MedNLI
+```bash
+python $CODE_DIR/utils/run_multi_class_classifier.py \
+  --do_train \
+  --do_eval \
+  --do_predict \
+  --task_name=mednli \
+  --data_dir=$DATASET_DIR \
+  --model_name_or_path=$MODEL_DIR \
+  --output_dir=./output/mednli
+  --learning_rate= \
+  --num_train_epochs= \
+  --logging_steps=0 \
+  --save_steps=0 \
+  --model_type=bert \
+  --max_seq_length=128 \
+  --per_gpu_train_batch_size=32 \
+  --per_gpu_eval_batch_size=32 \
+  --gradient_accumulation_steps=1 \
+  --seed=12 \
+  --do_lower_case \
+  --fp16
+```
