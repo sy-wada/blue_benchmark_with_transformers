@@ -18,6 +18,6 @@ Please change the following variables to suit your environment:
 
 `$CODE_DIR`: where you downloaded this repository  
 `$DATASET_DIR`: a dataset directory for each task  
-`$MODEL_DIR`: where the BERT model is saved  
+`$MODEL_DIR`: where the pre-trained model is saved  
 
 -----  
