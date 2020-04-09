@@ -164,6 +164,7 @@ python $CODE_DIR/utils/run_ner.py \
 |:----|:----|
 | **epochs** | 3, 4, 5, 6, 7, 8, 9, 10 |
 | **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
+
 Table: Parameter Candidates Used for Grid Search of DDI, ChemProt and i2b2 2010.
 ### DDI
 ```bash
