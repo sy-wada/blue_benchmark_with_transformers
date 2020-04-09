@@ -15,8 +15,8 @@ export CUDA_VISIBLE_DEVICES=0 # means n_gpu=1
 ```
 Please change the following variables to suit your environment:  
 
-`$CODE_DIR`: where you downloaded this repository
-`$DATASET_DIR`: a dataset directory for each task
-`$MODEL_DIR`: where the BERT model is saved
+`$CODE_DIR`: where you downloaded this repository  
+`$DATASET_DIR`: a dataset directory for each task  
+`$MODEL_DIR`: where the BERT model is saved  
 
 -----  
