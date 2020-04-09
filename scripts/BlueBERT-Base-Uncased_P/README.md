@@ -36,7 +36,7 @@ Table: Parameter Candidates Used for Grid Search of MedSTS
 |:----|:----|
 | **epochs** | 10, 20, 30, 40, 50 |
 | **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-| **seed** | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 |
+| **seed** | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,<br> 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,<br> 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 |
 
 Table: Parameter Candidates Used for Grid Search of BIOSSES
 ## Named Entity Recognition
