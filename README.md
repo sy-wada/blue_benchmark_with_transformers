@@ -72,42 +72,64 @@ Note: Some of the figures in the table above may differ from those in [the refer
 ## Relation extraction
 
 ### DDI
-| class        | Train |  Dev |  Test | note   |
-|--------------|------:|-----:|------:|:-------|
-|DDI-advise    |   633 |  193 |   221 |        |
-|DDI-effect    |  1212 |  396 |   360 |        |
-|DDI-int       |   146 |   42 |    96 |        |
-|DDI-mechanism |   946 |  373 |   302 |        |
-|DDI-false     | 15842 | 6240 |  4782 |        |
+| class        | Train |  Dev |  Test |
+|--------------|------:|-----:|------:|
+|DDI-advise    |   633 |  193 |   221 |
+|DDI-effect    |  1212 |  396 |   360 |
+|DDI-int       |   146 |   42 |    96 |
+|DDI-mechanism |   946 |  373 |   302 |
+|DDI-false     | 15842 | 6240 |  4782 |
 
 ### ChemProt
-| class | Train |  Dev |  Test | note   |
-|-------|------:|-----:|------:|:-------|
-|CPR:3  |   768 |  550 |   665 |        |
-|CPR:4  |  2251 | 1094 |  1661 |        |
-|CPR:5  |   173 |  116 |   195 |        |
-|CPR:6  |   235 |  199 |   293 |        |
-|CPR:9  |   727 |  457 |   644 |        |
-|false  | 15306 | 9404 | 13485 |        |
+| class | Train |  Dev |  Test |
+|-------|------:|-----:|------:|
+|CPR:3  |   768 |  550 |   665 |
+|CPR:4  |  2251 | 1094 |  1661 |
+|CPR:5  |   173 |  116 |   195 |
+|CPR:6  |   235 |  199 |   293 |
+|CPR:9  |   727 |  457 |   644 |
+|false  | 15306 | 9404 | 13485 |
 
 ### i2b2 2010
-| class | Train |  Dev |  Test | note   |
-|-------|------:|-----:|------:|:-------|
-|PIP    |   755 |    0 |  1448 |        |
-|TeCP   |   158 |    8 |   338 |        |
-|TeRP   |   993 |    0 |  2060 |        |
-|TrAP   |   883 |    2 |  1732 |        |
-|TrCP   |   184 |    0 |   342 |        |
-|TrIP   |    51 |    0 |   152 |        |
-|TrNAP  |    62 |    0 |   112 |        |
-|TrWP   |    24 |    0 |   109 |        |
-|false  | 19050 |   86 | 36707 |        |
+| class | Train |  Dev |  Test |
+|-------|------:|-----:|------:|
+|PIP    |   755 |    0 |  1448 |
+|TeCP   |   158 |    8 |   338 |
+|TeRP   |   993 |    0 |  2060 |
+|TrAP   |   883 |    2 |  1732 |
+|TrCP   |   184 |    0 |   342 |
+|TrIP   |    51 |    0 |   152 |
+|TrNAP  |    62 |    0 |   112 |
+|TrWP   |    24 |    0 |   109 |
+|false  | 19050 |   86 | 36707 |
 
 ## Document multilabel classification
 ### HoC
+| label                              | Train |  Dev |  Test |
+|------------------------------------|------:|-----:|------:|
+|activating invasion and metastasis  |   458 |   71 |   138 |
+|avoiding immune destruction         |   148 |   33 |    45 |
+|cellular energetics                 |   164 |   14 |    35 |
+|enabling replicative immortality    |   213 |   30 |    52 |
+|evading growth suppressors          |   264 |   34 |    70 |
+|genomic instability and mutation    |   563 |   58 |   150 |
+|inducing angiogenesis               |   238 |   39 |    80 |
+|resisting cell death                |   596 |   92 |   145 |
+|sustaining proliferative signaling  |   723 |   86 |   184 |
+|tumor promoting inflammation        |   346 |   55 |   119 |
+
+Note: This table shows the number of each label on the sentence level, rather than on the abstract level.
+- **Train**: sentences: 10527/ articles: 1108
+- **Dev**:   sentences:  1496/ articles:  157
+- **Test**:  sentences:  2896/ articles:  315
 
 ## Inference task
 ### MedNLI
+| class        | Train |  Dev |  Test |
+|--------------|------:|-----:|------:|
+|contradiction |  3744 |  465 |   474 |
+|entailment    |  3744 |  465 |   474 |
+|neutral       |  3744 |  465 |   474 |
 
 ## Citing
 currently being prepared...  
