@@ -244,7 +244,7 @@ Note: This table shows the number of each label on the sentence level, rather th
 ## Inference task
 - The aim of the inference task is to predict whether the premise sentence entails or contradicts the hypothesis sentence.
 - **Metrics**: overall accuracy
-  + We used classification_report in [pmetrics.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/ext/pmetrics.py).
+  + We used classification_report() in [pmetrics.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/ext/pmetrics.py).
 
 ### MedNLI
 | class        | Train |  Dev |  Test |
