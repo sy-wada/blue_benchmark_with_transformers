@@ -79,7 +79,7 @@ Note: Some of the figures in the table may differ from those in [the reference](
 Please visit the website or contact to the 1st author to obtain a copy of the dataset.
 ### BIOSSES
 ![BIOSSES_hist](./img/biosses.png)  
-[BIOSSES](http://tabilab.cmpe.boun.edu.tr/BIOSSES/) is a corpus of sentence pairs selected from the Biomedical Summarization Track Training Dataset in the biomedical domain ([Soğancıoğlu et al., 2017](#gsogancioglu)).  
+[BIOSSES](https://tabilab.cmpe.boun.edu.tr/BIOSSES/) is a corpus of sentence pairs selected from the Biomedical Summarization Track Training Dataset in the biomedical domain ([Soğancıoğlu et al., 2017](#gsogancioglu)).  
 #### Known problems
 The BIOSSES dataset is very small (only 16 sentence pairs in the development set). It causes unstable performance of fine-tuning, so we tried multiple random seeds and adopted the best model on the development set following [the author](#ywang).
 ## Named entity recognition
