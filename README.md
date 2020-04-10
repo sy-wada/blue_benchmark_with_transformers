@@ -22,8 +22,38 @@ transformers-cli convert --model_type bert \
   --config $BERT_BASE_DIR/bert_config.json \
   --pytorch_dump_output $BERT_BASE_DIR/pytorch_model.bin
 ```
+## Our models  
+will be released as soon as they are ready...
+
+## Results
+now constructing...
+
 -----  
-## Tasks
+## Table of Contents
+* [Preparations](#preparations)
+* [Our models](#our-models)
+* [Results](#results)
+* [BLUE Tasks](#blue-tasks)
+* [Sentence similarity](#sentence-similarity)
+  + [MedSTS](#medsts)
+  + [BIOSSES](#biosses)
+* [Named entity recognition](#named-entity-recognition)
+  + [BC5CDR-disease](#bc5cdr-disease)
+  + [BC5CDR-chemical](#bc5cdr-chemical)
+  + [ShARe/CLEFE](#shareclefe)
+* [Relation extraction](#relation-extraction)
+  + [DDI](#ddi)
+  + [ChemProt](#chemprot)
+  + [i2b2 2010](#i2b2-2010)
+* [Document multilabel classification](#document-multilabel-classification)
+  + [HoC](#hoc)
+* [Inference task](#inference-task)
+  + [MedNLI](#mednli)
+* [Citing](#citing)
+* [Acknowledgments](#acknowledgments)
+* [References](#references)
+
+## BLUE Tasks
 | Corpus          | Train |  Dev | Test | Task                    | Metrics             | Domain     |
 |-----------------|------:|-----:|-----:|-------------------------|---------------------|------------|
 | MedSTS          |   675 |   75 |  318 | Sentence similarity     | Pearson             | Clinical   |
@@ -42,9 +72,9 @@ Note: Some of the figures in the table may differ from those in [the reference](
 
 ## Sentence similarity
 ### MedSTS
-
+![MedSTS_hist](./img/medsts.png)
 ### BIOSSES
-
+![BIOSSES_hist](./img/biosses.png)
 ## Named entity recognition
 
 ### BC5CDR-disease
