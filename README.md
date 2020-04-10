@@ -64,10 +64,66 @@ Note: Some of the figures in the table above may differ from those in [the refer
 ## Named entity recognition
 
 ### BC5CDR-disease
+|tag of tokens   | Train |  Dev |  Test |
+|----------------|------:|-----:|------:|
+|starting with B |  4182 | 4244 |  4424 |
+|starting with I |     0 |    0 |     0 |
+|I next to O     |     0 |    0 |     0 |
+|**Total**       |  4182 | 4244 |  4424 |
 
 ### BC5CDR-chemical
+|tag of tokens   | Train |  Dev |  Test |
+|----------------|------:|-----:|------:|
+|starting with B |  5203 | 5347 |  5385 |
+|starting with I |     2 |    0 |     1 |
+|I next to O     |     0 |    0 |     0 |
+|**Total**       |  5205 | 5347 |  5386 |
+
+An example of starting with I: `test.tsv#L78550-L78598`
+```
+  
+Compound	10510854	553	O  
+7e	-	562	O  
+,	-	564	O  
+5	-	566	B  
+-	-	567	I  
+{	-	568	I  
+2	-	569	I  
+-	-	570	I  
+// -------------
+1H	-	637	I  
+-	-	639	I  
+  
+indol	10510854	641	I  
+-	-	646	I  
+2	-	647	I  
+-	-	648	I  
+one	-	649	I  
+,	-	652	O  
+// -------------
+```
 
 ### ShARe/CLEFE
+|tag of tokens   | Train |  Dev |  Test |
+|----------------|------:|-----:|------:|
+|starting with B |  4628 | 1065 |  5195 |
+|starting with I |     6 |    1 |    17 |
+|I next to O     |   517 |  110 |   411 |
+|**Total**       |  5151 | 1176 |  5623 |
+
+An example of I next to O: `Test.tsv#L112-L118`  
+You'd better check out these original files, too: 
+- `Task1Gold_SN2012/Gold_SN2012/00176-102920-ECHO_REPORT.txt#L2`
+- `Task1TestSetCorpus100/ALLREPORTS/00176-102920-ECHO_REPORT.txt#L21`
+```
+The	00176-102920-ECHO_REPORT	426	O
+left	-	430	B
+atrium	-	435	I
+is	-	442	O
+moderately	-	445	O
+dilated	-	456	I
+.	-	463	O
+```
 
 ## Relation extraction
 
