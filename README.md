@@ -110,7 +110,6 @@ There are some irregular patterns:
 |I next to O     |     0 |    0 |     0 |
 |**Total**       |  5205 | 5347 |  5386 |
 
-[BC5CDR](https://biocreative.bioinformatics.udel.edu/tasks/biocreative-v/track-3-cdr/)  
 An example of *starting with I*: `test.tsv#L78550-L78598`<a id="startingwithi"></a>
 ```
   
