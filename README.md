@@ -38,24 +38,8 @@ transformers-cli convert --model_type bert \
 | MedNLI          | 11232 | 1395 | 1422 | Inference               | accuracy            | Clinical   |
 
 Table: BLUE tasks.  
-Note: Some of the figures in the table above may differ from those in [the reference](#ypeng). We will explain them below.  
+Note: Some of the figures in the table may differ from those in [the reference](#ypeng). We will explain them later.  
 
-
-
-
-
-| Corpus          | Train |  Dev | Test | Task                    | Metrics             | Domain     |
-|-----------------|------:|-----:|-----:|-------------------------|---------------------|------------|
-| MedSTS          |   675 |   75 |  318 | Sentence similarity     | Pearson             | Clinical   |
-| BIOSSES         |    64 |   16 |   20 | Sentence similarity     | Pearson             | Biomedical |
-| BC5CDR-disease  |  4182 | 4244 | 4424 | Named Entity Recognition| F1                  | Biomedical |
-| BC5CDR-chemical |  5203 | 5347 | 5385 | NER                     | F1                  | Biomedical |
-| ShARe/CLEFE     |  4628 | 1075 | 5195 | NER                     | F1                  | Clinical   |
-| DDI             |  2937 | 1004 |  979 | Relation extraction     | micro F1            | Biomedical |
-| ChemProt        |  4154 | 2416 | 3458 | Relation extraction     | micro F1            | Biomedical |
-| i2b2-2010       |  3110 |   10 | 6293 | Relation extraction     | micro F1            | Clinical   |
-| HoC             |  1108 |  157 |  315 | Document classification | F1                  | Biomedical |
-| MedNLI          | 11232 | 1395 | 1422 | Inference               | accuracy            | Clinical   |
 ## Sentence similarity
 ### MedSTS
 
@@ -79,7 +63,7 @@ Note: Some of the figures in the table above may differ from those in [the refer
 |I next to O     |     0 |    0 |     0 |
 |**Total**       |  5205 | 5347 |  5386 |
 
-An example of starting with I: `test.tsv#L78550-L78598`
+An example of *starting with I*: `test.tsv#L78550-L78598`
 ```
   
 Compound	10510854	553	O  
@@ -111,7 +95,7 @@ one	-	649	I
 |I next to O     |   517 |  110 |   411 |
 |**Total**       |  5151 | 1176 |  5623 |
 
-An example of I next to O: `Test.tsv#L112-L118`  
+An example of *I next to O*: `Test.tsv#L112-L118`  
 You'd better check out these original files, too: 
 - `Task1Gold_SN2012/Gold_SN2012/00176-102920-ECHO_REPORT.txt#L2`
 - `Task1TestSetCorpus100/ALLREPORTS/00176-102920-ECHO_REPORT.txt#L21`
@@ -135,6 +119,7 @@ dilated	-	456	I
 |DDI-int       |   146 |   42 |    96 |
 |DDI-mechanism |   946 |  373 |   302 |
 |DDI-false     | 15842 | 6240 |  4782 |
+|**Total**     |  2937<br>+15842| 1004<br>+6240 |  979<br>+4782 |
 
 ### ChemProt
 | class | Train |  Dev |  Test |
@@ -145,6 +130,7 @@ dilated	-	456	I
 |CPR:6  |   235 |  199 |   293 |
 |CPR:9  |   727 |  457 |   644 |
 |false  | 15306 | 9404 | 13485 |
+|**Total**|  4154<br>+15306| 2416<br>+9404 |  3458<br>+13485 |
 
 ### i2b2 2010
 | class | Train |  Dev |  Test |
@@ -158,6 +144,7 @@ dilated	-	456	I
 |TrNAP  |    62 |    0 |   112 |
 |TrWP   |    24 |    0 |   109 |
 |false  | 19050 |   86 | 36707 |
+|**Total**|  3110<br>+19050| 10<br>+86 |  6293<br>+36707 |
 
 ## Document multilabel classification
 ### HoC
@@ -186,6 +173,7 @@ Note: This table shows the number of each label on the sentence level, rather th
 |contradiction |  3744 |  465 |   474 |
 |entailment    |  3744 |  465 |   474 |
 |neutral       |  3744 |  465 |   474 |
+|**Total**     | 11232 | 1395 |  1422 |
 
 ## Citing
 currently being prepared...  
