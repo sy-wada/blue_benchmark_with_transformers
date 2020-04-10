@@ -49,6 +49,7 @@ now constructing...
   + [HoC](#hoc)
 * [Inference task](#inference-task)
   + [MedNLI](#mednli)
+* [Total score](#total-score)
 * [Citing](#citing)
 * [Acknowledgments](#acknowledgments)
 * [References](#references)
@@ -163,10 +164,10 @@ dilated	-	456	I
 - Following the implimentation of [BLUE benchmark](https://github.com/ncbi-nlp/BLUE_Benchmark), we treated the relation extraction task as a sentence classification by replacing two named entity mentions of interest in the sentence with predefined tags ([Lee et al., 2020](#jlee)).
   + **ORIGINAL**: *Citalopram* protected against the RTI-76-induced inhibition of *SERT* binding.
   + **REPLACED**: *@CHEMICAL$* protected against the RTI-76-induced inhibition of *@GENE$* binding.
-  + **RELATION**: *citalopram* and *SERT* has **a chemicalgene relation**.
+  + **RELATION**: *citalopram* and *SERT* has **a chemical-gene relation**.
 - **Evaluation**:
   1. predict classes containing "false".
-  1. aggregate TP, FN, and FP.
+  1. aggregate TP, FN, and FP in each class.
   1. calculate metrics excluding the "false" class.
 - **Metrics**: micro-average F1-score.
   + We used [pmetrics.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/ext/pmetrics.py) from [the BLUE benchmark repository](https://github.com/ncbi-nlp/BLUE_Benchmark) to calculate micro-average.
@@ -213,6 +214,8 @@ dilated	-	456	I
 [i2b2 2010](https://www.i2b2.org/NLP/DataSets/) shared task collection consists of 170 documents for training and 256 documents for testing, which is the subset of the original dataset ([Uzuner et al., 2011](#ouzuner)).
 
 ## Document multilabel classification
+- The multilabel classification task predicts multiple labels from the texts.
+
 ### HoC
 | label                                 | Train |  Dev |  Test |
 |---------------------------------------|------:|-----:|------:|
@@ -232,7 +235,18 @@ Note: This table shows the number of each label on the sentence level, rather th
 - **Dev**:   sentences:  1496/ articles:  157
 - **Test**:  sentences:  2896/ articles:  315
 
+[HoC](https://github.com/sb895/Hallmarks-of-Cancer) (the Hallmarks of Cancers corpus) consists of 1,580 PubMed publication abstracts manually annotated with ten currently known hallmarks of cancer([Baker et al., 2016](#sbaker)).
+- **Evaluation**:
+  1. predict multi-labels for each sentence in the document.
+  1. combine the labels in one document and compare them with the gold-standard.
+- **Metrics**: example-based F1-score on the abstract level ([Zhang and Zhou, 2014](#zz); [Du et al., 2019](#jdu)).
+ + We used [pmetrics.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/ext/pmetrics.py) and [eval_hoc.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/eval_hoc.py) from [the BLUE benchmark repository](https://github.com/ncbi-nlp/BLUE_Benchmark) to calculate the metrics.
+
 ## Inference task
+- The aim of the inference task is to predict whether the premise sentence entails or contradicts the hypothesis sentence.
+- **Metrics**: overall accuracy
+  + We used classification_report in [pmetrics.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/ext/pmetrics.py).
+
 ### MedNLI
 | class        | Train |  Dev |  Test |
 |--------------|------:|-----:|------:|
@@ -240,6 +254,13 @@ Note: This table shows the number of each label on the sentence level, rather th
 |entailment    |  3744 |  465 |   474 |
 |neutral       |  3744 |  465 |   474 |
 |**Total**     | 11232 | 1395 |  1422 |
+
+[MedNLI](https://physionet.org/content/mednli/1.0.0/) is a collection of sentence pairs selected from MIMIC-III.  
+Please visit the website and sign up to obtain a copy of the dataset.  
+
+## Total score
+Following the practice in  [the BLUE benchmark](https://github.com/ncbi-nlp/BLUE_Benchmark), we use a macro-average of Pearson scores, F1-scores and an overall accuracy score to determine a pre-trained model's position.  
+The results are [above](#results).
 
 ## Citing
 currently being prepared...  
@@ -257,3 +278,6 @@ Evaluation of BERT and ELMo on Ten Benchmarking Datasets](https://www.aclweb.org
 - <a id="hzazo"></a>Herrero-Zazo M, Segura-Bedmar I, Martínez P, Declerck T. [The DDI corpus: an annotated corpus with pharmacological substances and drug-drug interactions](https://www.ncbi.nlm.nih.gov/pubmed/23906817). *Journal of biomedical informatics*. 2013 46: 914–920.
 - <a id="mkrallinger"></a>Krallinger M, Rabal O, Akhondi SA, Pérez MP, Santamaría JL, Rodríguez GP, Tsatsaronis G, et al.. [Overview of the BioCreative VI chemical-protein interaction track](https://biocreative.bioinformatics.udel.edu/tasks/biocreative-vi/track-5/). In Proceedings of *BioCreative*. 2017. 141–146.
 - <a id="ouzuner"></a>Uzuner Ö,South BR,Shen S, DuVall SL. [2010 i2b2/va challenge on concepts, assertions, and relations in clinical text](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3168320/). *Journal of the American Medical Informatics Association (JAMIA)*. 2011 18: 552–556.
+- <a id="sbaker"></a>Baker S, Silins I, Guo Y, Ali I, Högberg J, Stenius U, Korhonen A. [Automatic semantic classification of scientific literature according to the hallmarks of cancer](https://www.ncbi.nlm.nih.gov/pubmed/26454282). *Bioinformatics (Oxford, England)*. 2016 32: 432–440.
+- <a id="zz"></a>Zhang ML, Zhou ZH. [A review on multi-label learning algorithms](https://ieeexplore.ieee.org/document/6471714). *IEEE Transactions on Knowledge and Data Engineering*. 2014 26(8): 1819–1837.
+- <a id="jdu"></a>Du J, Chen Q, Peng Y, Xiang Y, Tao C, Lu Z. [ML-Net: multilabel classification of biomedical texts with deep neural networks](https://academic.oup.com/jamia/article/26/11/1279/5522430). *Journal of the American Medical Informatics Association (JAMIA)*. 2019 Nov; 26(11); 1279–1285.
