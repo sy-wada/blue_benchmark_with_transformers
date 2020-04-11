@@ -26,7 +26,7 @@ transformers-cli convert --model_type bert \
 will be released as soon as they are ready...
 
 ## Results
-now constructing...
+under construction..
 
 -----  
 ## Table of Contents
@@ -68,10 +68,11 @@ now constructing...
 | HoC             |  1108 |  157 |  315 | Document classification | F1                  | Biomedical |
 | MedNLI          | 11232 | 1395 | 1422 | Inference               | accuracy            | Clinical   |
 
-Note: Some of the figures in the table may differ from those in [the reference](#ypeng). We will explain them later.  
+Note: Some of the figures in the table may differ from those in [Peng et al. (2019)](#ypeng).  
+This repository provides our implementation of fine-tuning for BLUE. We will explain them later.  
 
 ## Sentence similarity
-- The sentence similarity task is to predict similarity scores based on sentence pairs [(ref)](#ypeng).
+- The sentence similarity task is to predict similarity scores based on sentence pairs.
 - **Metrics**: Pearson correlation coefficients
   + We used [scipy.stats.pearsonr()](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html).
 ### MedSTS
@@ -239,7 +240,7 @@ Note: This table shows the number of each label on the sentence level, rather th
   1. predict multi-labels for each sentence in the document.
   1. combine the labels in one document and compare them with the gold-standard.
 - **Metrics**: example-based F1-score on the abstract level ([Zhang and Zhou, 2014](#zz); [Du et al., 2019](#jdu)).
- + We used [pmetrics.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/ext/pmetrics.py) and [eval_hoc.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/eval_hoc.py) from [the BLUE benchmark repository](https://github.com/ncbi-nlp/BLUE_Benchmark) to calculate the metrics.
+  + We used [pmetrics.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/ext/pmetrics.py) and [eval_hoc.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/eval_hoc.py) from [the BLUE benchmark repository](https://github.com/ncbi-nlp/BLUE_Benchmark) to calculate the metrics.
 
 ## Inference task
 - The aim of the inference task is to predict whether the premise sentence entails or contradicts the hypothesis sentence.
@@ -258,7 +259,7 @@ Note: This table shows the number of each label on the sentence level, rather th
 Please visit the website and sign up to obtain a copy of the dataset.  
 
 ## Total score
-Following the practice in  [the BLUE benchmark](https://github.com/ncbi-nlp/BLUE_Benchmark), we use a macro-average of Pearson scores, F1-scores and an overall accuracy score to determine a pre-trained model's position.  
+Following the practice in  [Peng et al. (2019)](#ypeng), we use a macro-average of Pearson scores, F1-scores and an overall accuracy score to determine a pre-trained model's position.  
 The results are [above](#results).
 
 ## Citing
@@ -271,7 +272,7 @@ This work was supported by Council for Science, Technology and Innovation (CSTI)
 - <a id="ypeng"></a>Peng Y, Yan S, Lu Z. [Transfer Learning in Biomedical Natural Language Processing: An
 Evaluation of BERT and ELMo on Ten Benchmarking Datasets](https://www.aclweb.org/anthology/W19-5006/). In *Proceedings of the Workshop on Biomedical Natural Language Processing (BioNLP)*. 2019.
 - <a id="ywang"></a>Wang Y, Afzal N, Fu S, Wang L, Shen F, Rastegar-Mojarad M, Liu H. [MedSTS: a resource for clinical semantic textual similarity](https://link.springer.com/article/10.1007/s10579-018-9431-1). *Language Resources and Evaluation*. 2018 Jan 1:1-6.
-- <a id="gsogancioglu"></a>Sog˘ancıog˘lu G, Öztürk H, Özgü A. [BIOSSES: a semantic sentence similarity estimation system for the biomedical domain](https://www.ncbi.nlm.nih.gov/pubmed/28881973). *Bioinformatics*. 2017 Jul 15; 33(14): i49–i58.
+- <a id="gsogancioglu"></a>Soğancıoğlu G, Öztürk H, Özgü A. [BIOSSES: a semantic sentence similarity estimation system for the biomedical domain](https://www.ncbi.nlm.nih.gov/pubmed/28881973). *Bioinformatics*. 2017 Jul 15; 33(14): i49–i58.
 - <a id="jli"></a>Li J, Sun Y, Johnson RJ, Sciaky D, Wei CH, Leaman R, Davis AP, et al.. [BioCreative V CDR task corpus: a resource for chemical disease relation extraction](https://academic.oup.com/database/article/doi/10.1093/database/baw068/2630414). *Database: the journal of biological databases and curation*. 2016.
 - <a id="hsuominen"></a>Suominen H, Salanterä S, Velupillai S, Chapman WW, Savova G, Elhadad N, Pradhan S, et al.. [Overview of the ShARe/CLEF eHealth evaluation lab 2013](https://link.springer.com/chapter/10.1007%2F978-3-642-40802-1_24). *Information Access Evaluation Multilinguality, Multimodality, and Visualization*. 2013. Springer. 212–231.
 - <a id="jlee"></a>Jinhyuk Lee, Wonjin Yoon, Sungdong Kim, Donghyeon Kim, Sunkyu Kim, Chan Ho So, and Jaewoo Kang. 2019. [BioBERT: a pre-trained biomedical language representation model for biomedical text mining](https://www.ncbi.nlm.nih.gov/pubmed/31501885). *Bioinformatics*. 2020 Feb 15; 36(4): 1234-1240.
