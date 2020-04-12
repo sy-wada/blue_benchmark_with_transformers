@@ -68,7 +68,7 @@ under construction..
 | HoC             |  1108 |  157 |  315 | Document classification | F1                  | Biomedical |
 | MedNLI          | 11232 | 1395 | 1422 | Inference               | accuracy            | Clinical   |
 
-Note: Some of the figures in the table may differ from those in [Peng et al. (2019)](#ypeng).  
+**Note**: Some of the figures in the table may differ from those in [Peng et al. (2019)](#ypeng).  
 This repository provides our implementation of fine-tuning for BLUE. We will explain them later.  
 
 ## Sentence similarity
@@ -173,43 +173,43 @@ dilated	-	456	I
   + We used [pmetrics.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/ext/pmetrics.py) from [the BLUE benchmark repository](https://github.com/ncbi-nlp/BLUE_Benchmark) to calculate micro-average.
 
 ### DDI
-| class        | Train |  Dev |  Test |
-|--------------|------:|-----:|------:|
-|DDI-advise    |   633 |  193 |   221 |
-|DDI-effect    |  1212 |  396 |   360 |
-|DDI-int       |   146 |   42 |    96 |
-|DDI-mechanism |   946 |  373 |   302 |
-|DDI-false     | 15842 | 6240 |  4782 |
-|**Total**     |  2937<br>+15842| 1004<br>+6240 |  979<br>+4782 |
+| class        | Train |  Dev |  Test | note |
+|--------------|------:|-----:|------:|:-----|
+|DDI-advise    |   633 |  193 |   221 | a recommendation or advice regarding a drug interaction is given.<br>e.g. *UROXATRAL should not be used in combination with other alpha-blockers*. |
+|DDI-effect    |  1212 |  396 |   360 | DDIs describing an effect or a pharmacodynamic (PD) mechanism.<br>e.g. *In uninfected volunteers, 46% developed rash while receiving SUSTIVA and clarithromycin. <br> Chlorthalidone may potentiate the action of other antihypertensive drugs.* | 
+|DDI-int       |   146 |   42 |    96 | a DDI appears in the text without providing any additional information. <br>e.g. *The interaction of omeprazole and ketoconazole has been established.* |
+|DDI-mechanism |   946 |  373 |   302 | drug-drug interactions (DDIs) described by their pharmacokinetic (PK) mechanism. <br>e.g. *Grepafloxacin may inhibit the metabolism of theobromine.* |
+|DDI-false     | 15842 | 6240 |  4782 | |
+|**Total**     |  2937<br>+15842| 1004<br>+6240 |  979<br>+4782 | |
 
 [DDI](http://labda.inf.uc3m.es/ddicorpus) extraction 2013 corpus is a collection of 792 texts selected from the DrugBank database and other 233 Medline abstracts ([Herrero-Zazo et al., 2013](#hzazo)).
 
 ### ChemProt
-| class | Train |  Dev |  Test |
-|-------|------:|-----:|------:|
-|CPR:3  |   768 |  550 |   665 |
-|CPR:4  |  2251 | 1094 |  1661 |
-|CPR:5  |   173 |  116 |   195 |
-|CPR:6  |   235 |  199 |   293 |
-|CPR:9  |   727 |  457 |   644 |
-|false  | 15306 | 9404 | 13485 |
+| class | Train |  Dev |  Test | note |
+|-------|------:|-----:|------:|:-----|
+|CPR:3  |   768 |  550 |   665 | UPREGULATOR\|ACTIVATOR\|INDIRECT_UPREGULATOR |
+|CPR:4  |  2251 | 1094 |  1661 | DOWNREGULATOR\|INHIBITOR\|INDIRECT_DOWNREGULATOR |
+|CPR:5  |   173 |  116 |   195 | AGONIST\|AGONIST-ACTIVATOR\|AGONIST-INHIBITOR |
+|CPR:6  |   235 |  199 |   293 | ANTAGONIST |
+|CPR:9  |   727 |  457 |   644 | SUBSTRATE\|PRODUCT_OF\|SUBSTRATE_PRODUCT_OF |
+|false  | 15306 | 9404 | 13485 | |
 |**Total**|  4154<br>+15306| 2416<br>+9404 |  3458<br>+13485 |
 
 [ChemProt](https://biocreative.bioinformatics.udel.edu/news/corpora/) consists of 1,820 PubMed abstracts with chemical-protein interactions and was used in the BioCreative VI text mining chemical-protein interactions shared task ([Krallinger et al, 2017](#mkrallinger)).
 
 ### i2b2 2010
-| class | Train |  Dev |  Test |
-|-------|------:|-----:|------:|
-|PIP    |   755 |    0 |  1448 |
-|TeCP   |   158 |    8 |   338 |
-|TeRP   |   993 |    0 |  2060 |
-|TrAP   |   883 |    2 |  1732 |
-|TrCP   |   184 |    0 |   342 |
-|TrIP   |    51 |    0 |   152 |
-|TrNAP  |    62 |    0 |   112 |
-|TrWP   |    24 |    0 |   109 |
-|false  | 19050 |   86 | 36707 |
-|**Total**|  3110<br>+19050| 10<br>+86 |  6293<br>+36707 |
+| class | Train |  Dev |  Test | note |
+|-------|------:|-----:|------:|:-----|
+|PIP    |   755 |    0 |  1448 | Medical problem indicates medical problem. |
+|TeCP   |   158 |    8 |   338 | Test conducted to investigate medical problem. |
+|TeRP   |   993 |    0 |  2060 | Test reveals medical problem. |
+|TrAP   |   883 |    2 |  1732 | Treatment is administered for medical problem. |
+|TrCP   |   184 |    0 |   342 | Treatment causes medical problem. |
+|TrIP   |    51 |    0 |   152 | Treatment improves medical problem. |
+|TrNAP  |    62 |    0 |   112 | Treatment is not administered because of medical problem. |
+|TrWP   |    24 |    0 |   109 | Treatment worsens medical problem. |
+|false  | 19050 |   86 | 36707 | They are in the same sentence, but do not fit into one of the above defined relationships. |
+|**Total**|  3110<br>+19050| 10<br>+86 |  6293<br>+36707 | |
 
 [i2b2 2010](https://www.i2b2.org/NLP/DataSets/) shared task collection consists of 170 documents for training and 256 documents for testing, which is the subset of the original dataset ([Uzuner et al., 2011](#ouzuner)).
 
@@ -217,20 +217,23 @@ dilated	-	456	I
 - The multilabel classification task predicts multiple labels from the texts.
 
 ### HoC
-| label                                 | Train |  Dev |  Test |
-|---------------------------------------|------:|-----:|------:|
-|0. activating invasion and metastasis  |   458 |   71 |   138 |
-|1. avoiding immune destruction         |   148 |   33 |    45 |
-|2. cellular energetics                 |   164 |   14 |    35 |
-|3. enabling replicative immortality    |   213 |   30 |    52 |
-|4. evading growth suppressors          |   264 |   34 |    70 |
-|5. genomic instability and mutation    |   563 |   58 |   150 |
-|6. inducing angiogenesis               |   238 |   39 |    80 |
-|7. resisting cell death                |   596 |   92 |   145 |
-|8. sustaining proliferative signaling  |   723 |   86 |   184 |
-|9. tumor promoting inflammation        |   346 |   55 |   119 |
+| label | Train |  Dev |  Test |
+|-------|------:|-----:|------:|
+|0      |   458 |   71 |   138 |
+|1      |   148 |   33 |    45 |
+|2      |   164 |   14 |    35 |
+|3      |   213 |   30 |    52 |
+|4      |   264 |   34 |    70 |
+|5      |   563 |   58 |   150 |
+|6      |   238 |   39 |    80 |
+|7      |   596 |   92 |   145 |
+|8      |   723 |   86 |   184 |
+|9      |   346 |   55 |   119 |
 
-Note: This table shows the number of each label on the sentence level, rather than on the abstract level.
+**Labels**: *(IM) Activating invasion & metastasis, (ID) Avoiding immune destruction, (CE) Deregulating cellular energetics,
+(RI) Enabling replicative immortality, (GS) Evading growth suppressors, (GI) Genome instability & mutation,
+(A) Inducing angiogenesis, (CD) Resisting cell death, (PS) Sustaining proliferative signaling, (TPI) tumor promoting inflammation*  
+**Note**: This table shows the number of each label on the sentence level, rather than on the abstract level.  
 - **Train**: sentences: 10527/ articles: 1108
 - **Dev**:   sentences:  1496/ articles:  157
 - **Test**:  sentences:  2896/ articles:  315
@@ -265,7 +268,7 @@ The results are [above](#results).
 ## Citing
 currently being prepared...  
 ## Acknowledgments
-We are grateful to the authors of BERT to make the data and codes publicly available. We thank the NVIDIA team because their implimentation of [BERT for PyTorch](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT) enables us to train our BERT models locally. I would also like to take this opportunity to thank Yifan Peng and shared task organizers for publishing BLUE benchmark.  
+We are grateful to the authors of BERT to make the data and codes publicly available. We thank the NVIDIA team because their implimentation of [BERT for PyTorch](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT) enables us to pre-train BERT models on our local machine. We would also like to take this opportunity to thank Yifan Peng and shared task organizers for publishing BLUE benchmark.  
 This work was supported by Council for Science, Technology and Innovation (CSTI), cross-ministerial Strategic Innovation Promotion Program (SIP), "Innovative AI Hospital System" (Funding Agency: National Instisute of Biomedical Innovation, Health and Nutrition (NIBIOHN)).
 
 ## References
