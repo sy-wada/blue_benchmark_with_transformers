@@ -3,6 +3,7 @@
 **\*\*\*\*\* New April th, 2020: released \*\*\*\*\***
 
 -----  
+Thank you for your interest in our research!  
 [Biomedical Language Understanding Evaluation (BLUE) benchmark](https://github.com/ncbi-nlp/BLUE_Benchmark) is a collection of resources for evaluating and analyzing biomedical
 natural language representation models ([Peng et al., 2019](#ypeng)).  
 This repository provides our implementation of fine-tuning for BLUE benchmark with [🤗Transformers](https://github.com/huggingface/transformers).  
@@ -230,9 +231,9 @@ dilated	-	456	I
 |8      |   723 |   86 |   184 |
 |9      |   346 |   55 |   119 |
 
-**Labels**: *(IM) Activating invasion & metastasis, (ID) Avoiding immune destruction, (CE) Deregulating cellular energetics,
-(RI) Enabling replicative immortality, (GS) Evading growth suppressors, (GI) Genome instability & mutation,
-(A) Inducing angiogenesis, (CD) Resisting cell death, (PS) Sustaining proliferative signaling, (TPI) tumor promoting inflammation*  
+**Labels**: ***(IM)** Activating invasion & metastasis, **(ID)** Avoiding immune destruction, **(CE)** Deregulating cellular energetics,
+**(RI)** Enabling replicative immortality, **(GS)** Evading growth suppressors, **(GI)** Genome instability & mutation,
+**(A)** Inducing angiogenesis, **(CD)** Resisting cell death, **(PS)** Sustaining proliferative signaling, **(TPI)** tumor promoting inflammation*  
 **Note**: This table shows the number of each label on the sentence level, rather than on the abstract level.  
 - **Train**: sentences: 10527/ articles: 1108
 - **Dev**:   sentences:  1496/ articles:  157
