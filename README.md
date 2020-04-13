@@ -79,16 +79,14 @@ will be released as soon as they are ready...
 | MedSTS          |   675 |   75 |  318 | Sentence similarity     | Pearson             | Clinical   |
 | BIOSSES         |    64 |   16 |   20 | Sentence similarity     | Pearson             | Biomedical |
 | BC5CDR-disease  |  4182 | 4244 | 4424 | Named entity recognition| F1                  | Biomedical |
-| BC5CDR-chemical |  5205 | 5347 | 5386 | Named entity recognition| F1                  | Biomedical |
-| ShARe/CLEFE     |  5151 | 1176 | 5623 | Named entity recognition| F1                  | Clinical   |
+| BC5CDR-chemical |  5203 | 5347 | 5385 | Named entity recognition| F1                  | Biomedical |
+| ShARe/CLEFE     |  4628 | 1065 | 5195 | Named entity recognition| F1                  | Clinical   |
 | DDI             |  2937 | 1004 |  979 | Relation extraction     | micro F1            | Biomedical |
 | ChemProt        |  4154 | 2416 | 3458 | Relation extraction     | micro F1            | Biomedical |
 | i2b2-2010       |  3110 |   11 | 6293 | Relation extraction     | micro F1            | Clinical   |
 | HoC             |  1108 |  157 |  315 | Document classification | F1                  | Biomedical |
 | MedNLI          | 11232 | 1395 | 1422 | Inference               | accuracy            | Clinical   |
 
-**Note**: Some of the figures in the table may differ from those in [Peng et al. (2019)](#ypeng).  
-This repository provides our implementation of fine-tuning for BLUE. We will explain them later.  
 
 ## Sentence similarity
 - The sentence similarity task is to predict similarity scores based on sentence pairs.
