@@ -278,7 +278,7 @@ dilated	-	456	I
 |neutral       |  3744 |  465 |   474 |
 |**Total**     | 11232 | 1395 |  1422 |
 
-[MedNLI](https://physionet.org/content/mednli/1.0.0/) is a collection of sentence pairs selected from MIMIC-III.  
+[MedNLI](https://physionet.org/content/mednli/1.0.0/) is a collection of sentence pairs selected from MIMIC-III ([Romanov and Shivade, 2018](#aromanov)).  
 Please visit the website and sign up to obtain a copy of the dataset.  
 
 ## Total score
@@ -305,3 +305,4 @@ Evaluation of BERT and ELMo on Ten Benchmarking Datasets](https://www.aclweb.org
 - <a id="sbaker"></a>Baker S, Silins I, Guo Y, Ali I, Högberg J, Stenius U, Korhonen A. [Automatic semantic classification of scientific literature according to the hallmarks of cancer](https://www.ncbi.nlm.nih.gov/pubmed/26454282). *Bioinformatics (Oxford, England)*. 2016 32: 432–440.
 - <a id="zz"></a>Zhang ML, Zhou ZH. [A review on multi-label learning algorithms](https://ieeexplore.ieee.org/document/6471714). *IEEE Transactions on Knowledge and Data Engineering*. 2014 26(8): 1819–1837.
 - <a id="jdu"></a>Du J, Chen Q, Peng Y, Xiang Y, Tao C, Lu Z. [ML-Net: multilabel classification of biomedical texts with deep neural networks](https://academic.oup.com/jamia/article/26/11/1279/5522430). *Journal of the American Medical Informatics Association (JAMIA)*. 2019 Nov; 26(11); 1279–1285.
+- <a id="aromanov"></a>Romanov A, Shivade C. [Lessons from Natural Language Inference in the Clinical Domain](https://www.aclweb.org/anthology/D18-1187/). In *Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing*. 2018: 1586-1596.
