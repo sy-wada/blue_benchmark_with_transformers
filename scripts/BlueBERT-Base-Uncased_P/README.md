@@ -54,7 +54,7 @@ python $CODE_DIR/utils/run_sts.py \
   --task_name=medsts \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
-  --output_dir=./output/medsts
+  --output_dir=./output/medsts \
   --learning_rate=5e-5 \
   --num_train_epochs=9 \
   --logging_steps=0 \
@@ -73,7 +73,7 @@ python $CODE_DIR/utils/run_sts.py \
 |:----|:----|
 | **epochs** | 10, 20, 30, 40, 50 |
 | **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-| **seed** | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,<br> 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,<br> 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 |
+| **seed** | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,<br> 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 |
 
 Table: Parameter Candidates Used for Grid Search of BIOSSES.
 ```bash
@@ -84,7 +84,7 @@ python $CODE_DIR/utils/run_sts.py \
   --task_name=biosses \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
-  --output_dir=./output/biosses
+  --output_dir=./output/biosses \
   --learning_rate=5e-5 \
   --num_train_epochs=50 \
   --logging_steps=0 \
@@ -114,7 +114,7 @@ python $CODE_DIR/utils/run_ner.py \
   --task_name=bc5cdr \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
-  --output_dir=./output/bc5cdr_disease
+  --output_dir=./output/bc5cdr_disease \
   --learning_rate=2e-5 \
   --num_train_epochs=20 \
   --logging_steps=0 \
@@ -137,7 +137,7 @@ python $CODE_DIR/utils/run_ner.py \
   --task_name=bc5cdr \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
-  --output_dir=./output/bc5cdr_chem
+  --output_dir=./output/bc5cdr_chem \
   --learning_rate=4e-5 \
   --num_train_epochs=30 \
   --logging_steps=0 \
@@ -160,7 +160,7 @@ python $CODE_DIR/utils/run_ner.py \
   --task_name=clefe \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
-  --output_dir=./output/clefe
+  --output_dir=./output/clefe \
   --learning_rate=2e-5 \
   --num_train_epochs=30 \
   --logging_steps=0 \
@@ -190,7 +190,7 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --task_name=ddi2013 \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
-  --output_dir=./output/ddi2013
+  --output_dir=./output/ddi2013 \
   --learning_rate=2e-5 \
   --num_train_epochs=6 \
   --logging_steps=0 \
@@ -213,7 +213,7 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --task_name=chemprot \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
-  --output_dir=./output/chemprot
+  --output_dir=./output/chemprot \
   --learning_rate=5e-5 \
   --num_train_epochs=5 \
   --logging_steps=0 \
@@ -236,7 +236,7 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --task_name=i2b2_2010 \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
-  --output_dir=./output/i2b2_2010
+  --output_dir=./output/i2b2_2010 \
   --learning_rate=1e-5 \
   --num_train_epochs=10 \
   --logging_steps=0 \
@@ -267,7 +267,7 @@ python $CODE_DIR/utils/run_multi_label_classifier.py \
   --task_name=hoc \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
-  --output_dir=./output/hoc
+  --output_dir=./output/hoc \
   --learning_rate=4e-5 \
   --num_train_epochs=10 \
   --logging_steps=0 \
@@ -297,7 +297,7 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --task_name=mednli \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
-  --output_dir=./output/mednli
+  --output_dir=./output/mednli \
   --learning_rate=3e-5 \
   --num_train_epochs=10 \
   --logging_steps=0 \
