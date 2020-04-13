@@ -27,7 +27,25 @@ transformers-cli convert --model_type bert \
 will be released as soon as they are ready...
 
 ## Results
-under construction..
+|  | BERT-BASE | BioBERT (v1.1) | BlueBERT (P) | BlueBERT (P+M) | PubMed200 (B+W) | BioMed (demo) | BioMed (full) |
+|:-------|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
+| [MedSTS](#medsts) | 50.8 | 85.0 | **85.3** | 84.4 | 83.2 | 83.8 | 84.4 |
+| [BIOSSES](#biosses) | 11.8 | 85.8 | 90.5 | 84.3 | 88.8 | **92.9** | (92.1) |
+| [BC5CDR disease](#bc5cdr-disease) | 69.3 | 85.9 | 86.3 | 85.5 | 86.7 | **87.9** | (87.5) |
+| [BC5CDR chemical](#bc5cdr-chemical) | 79.2 | 93.3 | 93.6 | 92.4 | 92.3 | 93.8 | (**94.0**) |
+| [ShARe/CLEFE](#shareclefe) | 61.3 | 81.9 | 81.7 | 82.4 | 82.1 | **83.8** | (83.4) |
+| [DDI](#ddi) | 34.1 | 79.9 | 80.5 | (79.3) | 78.4 | **80.8** | (79.4) |
+| [ChemProt](#chemprot) | 32.3 | 73.2 | 73.5 | 68.8 | 67.8 | **75.5** | (74.7) |
+| [i2b2](#i2b2-2010) | 51.2 | 72.2 | (74.2) | (**75.1**) | 72.9 | 72.9 | (72.3) |
+| [HoC](#hoc) | 81.6 | 85.9 | 86.2 | 82.7 | 84.9 | **86.9** | (**86.9**) |
+| [MedNLI](#mednli) | 67.0 | **83.2** | 82.7 | (82.7) | 80.1 | 83.1 | (82.6) |
+| **Total** | 53.9 | 82.6 | (83.5) | (81.8) | 81.7 | **84.1** | (83.7) |
+
+**Note**:  
+- Due to the size of BIOSSES, the performance is unstable.
+  * In addition to epochs and learning rate , we try multiple random seeds (n=30) and choose models in the top 100 on the development set.
+  * Then, we evaluate the mean of test scores on each model.
+  * It is suggested in [Peng et al. (2019)](#ypeng).  
 
 -----  
 ## Table of Contents
@@ -84,7 +102,8 @@ Please visit the website or contact to the 1st author to obtain a copy of the da
 ![BIOSSES_hist](./img/biosses.png)  
 [BIOSSES](https://tabilab.cmpe.boun.edu.tr/BIOSSES/) is a corpus of sentence pairs selected from the Biomedical Summarization Track Training Dataset in the biomedical domain ([Soğancıoğlu et al., 2017](#gsogancioglu)).  
 #### Known problems
-The BIOSSES dataset is very small (only 16 sentence pairs in the development set). It causes unstable performance of fine-tuning, so we tried multiple random seeds and adopted the best model on the development set following the practice in [Peng et al. (2019)](#ypeng).
+The BIOSSES dataset is very small (only 16 sentence pairs in the development set). It causes unstable performance of fine-tuning, so in addition to epochs and learning rate, we try multiple random seeds (n=30) and adopt models in the top 100 on the development set.  
+Then, we evaluate the mean of test scores on each model.  
 ## Named entity recognition
 - The aim of the named entity recognition task is to predict mention spans given in the text.
 - **Metrics**: strict version of F1-score (exact phrase matching).
