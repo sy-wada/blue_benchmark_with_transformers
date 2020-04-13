@@ -3,7 +3,7 @@
 The optimal hyperparameters we have searched are described here.  
 Please keep in mind that different environments may produce different results from ours.
 
-- [BlueBERT-Base, Uncased, PubMed](./BlueBERT-Base-Uncased_P) [(ref)](#bluebert)
+- [BlueBERT-Base, Uncased, PubMed](./BlueBERT-Base-Uncased_P)  ([Peng et al., 2019](#bluebert))
   - **Vocabulary**: BERT-Base
   - **Pre-training**: initialized from BERT-Base-Uncased and pretrained on PubMed abstracts. 
 
