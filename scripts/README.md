@@ -8,10 +8,11 @@ Please keep in mind that different environments may produce different results fr
   - **Pre-training**:
     - initialized from BERT-Base-Uncased
     - pre-trained on PubMed abstracts.
-    - **setting**: *using the same vocabulary, sequence length, and other configurations provided by ([Devlin et al., (2019)](#bert).*
-      - **batch size** : 256 sequences?
-      - **step**: 5M steps
-      - **processed tokens** : 256 sequences * 128 tokens * 5M steps = 164B tokens
+    - **setting**: *using the same vocabulary, sequence length, and other configurations provided by ([Devlin et al., (2019)](#bert)).*
+      - **max_seq_length** = 128 tokens
+      - **global_batch_size** = 256 sequences (32 x 8)?
+      - **steps** = 5M steps
+      - **processed tokens** : 256 sequences x 128 tokens x 5M steps = 164B tokens
 
 ## References
 - <a id="bert"><a>Devlin J, Chang M-W, Lee K, Toutanova K. [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://www.aclweb.org/anthology/N19-1423/). Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers); 2019: 4171-4186.
