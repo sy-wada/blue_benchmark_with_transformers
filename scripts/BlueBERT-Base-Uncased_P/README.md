@@ -64,6 +64,8 @@ python $CODE_DIR/utils/run_sts.py \
   --gradient_accumulation_steps=1 \
   --seed=12 \
   --do_lower_case \
+  --eval_every_epoch \
+  --overwrite_output_dir \
   --fp16
 ```
 ### BIOSSES
@@ -94,6 +96,8 @@ python $CODE_DIR/utils/run_sts.py \
   --gradient_accumulation_steps=1 \
   --seed=4 \
   --do_lower_case \
+  --eval_every_epoch \
+  --overwrite_output_dir \
   --fp16
 ```
 ## Named Entity Recognition
@@ -124,6 +128,8 @@ python $CODE_DIR/utils/run_ner.py \
   --gradient_accumulation_steps=1 \
   --seed=12 \
   --do_lower_case \
+  --eval_every_epoch \
+  --overwrite_output_dir \
   --fp16
 ```
 ### BC5CDR-chemical
@@ -147,6 +153,8 @@ python $CODE_DIR/utils/run_ner.py \
   --gradient_accumulation_steps=1 \
   --seed=12 \
   --do_lower_case \
+  --eval_every_epoch \
+  --overwrite_output_dir \
   --fp16
 ```
 ### ShARe/CLEFE
@@ -170,6 +178,8 @@ python $CODE_DIR/utils/run_ner.py \
   --gradient_accumulation_steps=1 \
   --seed=12 \
   --do_lower_case \
+  --eval_every_epoch \
+  --overwrite_output_dir \
   --fp16
 ```
 ## Relation Extraction
@@ -200,6 +210,8 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --gradient_accumulation_steps=1 \
   --seed=12 \
   --do_lower_case \
+  --eval_every_epoch \
+  --overwrite_output_dir \
   --fp16
 ```
 ### ChemProt
@@ -223,6 +235,8 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --gradient_accumulation_steps=1 \
   --seed=12 \
   --do_lower_case \
+  --eval_every_epoch \
+  --overwrite_output_dir \
   --fp16
 ```
 ### i2b2 2010
@@ -246,6 +260,8 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --gradient_accumulation_steps=1 \
   --seed=12 \
   --do_lower_case \
+  --eval_every_epoch \
+  --overwrite_output_dir \
   --fp16
 ```
 ## Document multilabel classification
@@ -277,6 +293,8 @@ python $CODE_DIR/utils/run_multi_label_classifier.py \
   --gradient_accumulation_steps=1 \
   --seed=12 \
   --do_lower_case \
+  --eval_every_epoch \
+  --overwrite_output_dir \
   --fp16
 ```
 ## Inference task
@@ -307,5 +325,7 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --gradient_accumulation_steps=1 \
   --seed=12 \
   --do_lower_case \
+  --eval_every_epoch \
+  --overwrite_output_dir \
   --fp16
 ```
