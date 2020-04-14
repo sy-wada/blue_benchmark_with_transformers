@@ -38,7 +38,6 @@ import random
 
 import numpy as np
 import torch
-# from seqeval.metrics import f1_score, precision_score, recall_score
 from torch.nn import CrossEntropyLoss
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, TensorDataset
 from torch.utils.data.distributed import DistributedSampler
@@ -58,11 +57,7 @@ from processors.utils_ner import (
     convert_examples_to_features,
 )
 
-from metrics.conlleval import evaluate as blue_evaluate
-from metrics.conlleval import (
-    report_notprint,
-    metrics,
-)
+from metrics.ner import eval_ner
 from itertools import chain
 
 
@@ -245,7 +240,7 @@ def train(args, train_dataset, model, tokenizer, labels, pad_token_label_id):
                 # use "--eval_every_epoch" insted of "--evaluate_during_training".
                 if args.local_rank in [-1, 0] and args.logging_steps == 0 and args.eval_every_epoch:
                     if global_step % (t_total / args.num_train_epochs) == 0:
-                        results, _ = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="dev")
+                        results, _, _ = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="dev")
                         results['gs'] = global_step
                         results['epochs'] = int(global_step / t_total * args.num_train_epochs)
                         
@@ -358,25 +353,15 @@ def evaluate(args, model, tokenizer, labels, pad_token_label_id, mode, prefix=""
     seq_labels = chain.from_iterable(out_label_list)
     seq_preds = chain.from_iterable(preds_list)
     sequences = ["dummy {} {}".format(y_true, y_pred) for y_true, y_pred in zip(seq_labels, seq_preds)]
-    counts = blue_evaluate(sequences)
-    overall, _ = metrics(counts)
+    results, report = eval_ner(sequences)
 
-    results = {
-        "loss": eval_loss,
-        "TP": overall.tp,
-        "FP": overall.fp,
-        "FN": overall.fn,
-        "precision": overall.prec,
-        "recall": overall.rec,
-        "FB1": overall.fscore,
-        
-    }
+    results['loss'] = eval_loss
 
     logger.info("***** Evaluate BLUE Benchmark %s *****", prefix)
     for key in results.keys():
         logger.info("  %s = %s", key, str(results[key]))
 
-    return results, preds_list
+    return results, preds_list, report
 
 
 def load_and_cache_examples(args, tokenizer, labels, pad_token_label_id, mode):
@@ -753,7 +738,7 @@ def main():
             global_step = checkpoint.split("-")[-1] if len(checkpoints) > 1 else ""
             model = model_class.from_pretrained(checkpoint)
             model.to(args.device)
-            result, _ = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="dev", prefix=global_step)
+            result, _, report = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="dev", prefix=global_step)
             if global_step:
                 result = {"{}_{}".format(global_step, k): v for k, v in result.items()}
             results.update(result)
@@ -762,6 +747,7 @@ def main():
         with open(output_eval_file, "w") as writer:
             for key in sorted(results.keys()):
                 writer.write("{} = {}\n".format(key, str(results[key])))
+        print(report)
 
     if args.do_predict and args.local_rank in [-1, 0]:
         #MODIFY:
@@ -776,7 +762,7 @@ def main():
             )
         model = model_class.from_pretrained(args.output_dir)
         model.to(args.device)
-        result, predictions = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="test")
+        result, predictions, report = evaluate(args, model, tokenizer, labels, pad_token_label_id, mode="test")
         # Save results
         output_test_results_file = os.path.join(args.output_dir,
                                                 args.result_prefix + "test_results.txt")
@@ -814,16 +800,13 @@ def main():
                         
         logger.info("Finished writing test_predictions.txt (token y_true y_pred) :")
         
-        # Evaluate BLUE metrics.
-        logger.info("Evaluate test_predictions.txt by BLUE metrics:")
+        # Evaluate BLUE metrics(load the prediciton file).
         with open(output_test_predictions_file, "r") as f:
-            counts = blue_evaluate(f)
-        eval_result = report_notprint(counts)
-        print(''.join(eval_result))
+            _ , report = eval_ner(f)
+        print(report)
         with open(os.path.join(args.output_dir,
-                               args.result_prefix + "test_results_conlleval.txt"), "w") as fd:
-            fd.write(''.join(eval_result))
-
+                               args.result_prefix + "test_results_count.txt"), "w") as fd:
+            fd.write(report)
 
     return results
 
