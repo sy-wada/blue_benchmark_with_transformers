@@ -1,6 +1,7 @@
 # coding=utf-8
+import pandas as pd
 
-from .pmetrics import classification_report, micro
+from .common_metrics import classification_report
 
 
 def calculate_metrics(y_true, y_pred, label_list):
@@ -14,24 +15,19 @@ def calculate_metrics(y_true, y_pred, label_list):
         y_true = [label_list.index(value) for value in y_true]
         y_pred = [label_list.index(value) for value in y_pred]
     
-    metrics = classification_report(y_true, y_pred, macro=False,
-                                    micro=False, classes_=label_list)
+    df = classification_report(y_true, y_pred, label_list, drop_false=True,
+                              micro=True, macro=True)
     
-    df = metrics.table
+    row = df[df['Class'] == 'micro_drop_false'].iloc[0]
     
-    false_index = df[df['Class'].str.contains('false')].index[0]
-    df.drop(false_index, inplace=True)
-    micro_drop_false = ['micro_drop_false']
-    micro_drop_false.extend(micro(df.TP.sum(), df.TN.sum(), df.FP.sum(), df.FN.sum()))
-    df.loc[df.index.max() + 1] = micro_drop_false
-    
-    row = df[df['Class'] == 'micro_drop_false']
+
     results = {
-        "TP": int(row.TP),
-        "FP": int(row.FP),
-        "FN": int(row.FN),
-        "precision": float(row.Precision),
-        "recall": float(row.Recall),
-        "FB1": float(row['F-score']),
+        "TP": row.TP,
+        "FP": row.FP,
+        "FN": row.FN,
+        "precision": row.Precision,
+        "recall": row.Recall,
+        "FB1": row.F1score,
+        "FB1_macro": df[df['Class'] == 'macro_drop_false'].iloc[0].F1score,
     }
     return results, df
