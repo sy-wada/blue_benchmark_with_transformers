@@ -1,25 +1,24 @@
 # coding=utf-8
 import pandas as pd
+from sklearn.metrics import accuracy_score
 
-from .pmetrics import classification_report
+from .common_metrics import classification_report
 
 labels = ['contradiction', 'entailment', 'neutral']
 
 def eval_mednli(y_true, y_pred, label_list):
-    result = classification_report(y_true, y_pred, classes_=label_list, macro=True, micro=True)
-    df = result.table
+    df = classification_report(y_true, y_pred, label_list, drop_false=False)
     
     # add micro average to the result
-    row = df[df['Class'] == 'micro']
+    row = df[df['Class'] == 'micro_include_false'].iloc[0]
     results = {
-        "TP": int(row.TP),
-        "FP": int(row.FP),
-        "FN": int(row.FN),
-        "precision": float(row.Precision),
-        "recall": float(row.Recall),
-        "FB1": float(row['F-score']),
+        "TP": row.TP,
+        "FP": row.FP,
+        "FN": row.FN,
+        "precision": row.Precision,
+        "recall": row.Recall,
+        "FB1": row.F1score,
+        "overall_acc": accuracy_score(y_true, y_pred),
     }
-    
-    # add overall accuracy to the result
-    results['overall_acc'] = float(df[df['Class'] == 'macro'].iloc[0].at['Accuracy'])
+
     return results, df
