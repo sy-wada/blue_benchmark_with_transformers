@@ -314,7 +314,12 @@ Following the practice in  [Peng et al. (2019)](#ypeng), we use a macro-average 
 The results are [above](#results).
 
 ## Citing
-currently being prepared.
+If you use our work in your research, please kindly cite the following papers:  
+`the original paper of BLUE Benchmark`  
+- Peng Y, Yan S, Lu Z. Transfer Learning in Biomedical Natural Language Processing: An Evaluation of BERT and ELMo on Ten Benchmarking Datasets. In Proceedings of the 2019 Workshop on Biomedical Natural Language Processing (BioNLP 2019). 2019:58-65.
+
+`Our research`  
+- currently being prepared.
 ## Acknowledgments
 We are grateful to the authors of BERT to make the data and codes publicly available. We thank the NVIDIA team because their implimentation of [BERT for PyTorch](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT) enables us to pre-train BERT models on our local machine. We would also like to take this opportunity to thank Yifan Peng and shared task organizers for publishing BLUE benchmark.  
 This work was supported by Council for Science, Technology and Innovation (CSTI), cross-ministerial Strategic Innovation Promotion Program (SIP), "Innovative AI Hospital System" (Funding Agency: National Instisute of Biomedical Innovation, Health and Nutrition (NIBIOHN)).
