@@ -29,9 +29,8 @@ transformers-cli convert --model_type bert \
 
 ## Results
 |            |**Total**|[MedSTS](#medsts)|[BIOSSES](#biosses)|[BC5CDR disease](#bc5cdr-disease)|[BC5CDR chemical](#bc5cdr-chemical)|[ShARe CLEFE](#shareclefe)|[DDI](#ddi)|[ChemProt](#chemprot)|[i2b2](#i2b2-2010)|[HoC](#hoc)|[MedNLI](#mednli)| 
-|:----------------|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
-| BlueBERT (P)    | 83.5 | 85.3 | 90.5 | 86.3 | 93.6 | 81.7 | 80.5 | 73.5 | 74.2 | 86.2 | 82.7 |
-
+|:--------------------------------------------------|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
+| [BlueBERT (P)](./scripts/BlueBERT-Base-Uncased_P) | 83.5 | 85.3 | 90.5 | 86.3 | 93.6 | 81.7 | 80.5 | 73.5 | 74.2 | 86.2 | 82.7 |
 
 **Note**:  
 - Due to the size of BIOSSES, the performance is unstable.
