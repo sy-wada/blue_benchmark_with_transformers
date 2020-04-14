@@ -32,7 +32,7 @@ transformers-cli convert --model_type bert \
 |:------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
 | BlueBERT (P)            |  83.5  |  85.3  |  90.5  |  86.3  |  93.6  |  81.7  |  80.5  |  73.5  |  74.2  |  86.2  |  82.7  |
 
-Table: Test performances of all BERT variants on all tasks and datasets. **Bold** indicates the best result of all.
+Table: Test performances of all BERT variants on all tasks and datasets. **Bold** indicates the best result of all.  
 **Note**:  
 - Due to the size of BIOSSES, the performance is unstable.
   * In addition to epochs and learning rate , we try multiple random seeds (n=20) and choose models in the top 50 (top 10%) on the development set.
