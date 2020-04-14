@@ -110,18 +110,18 @@ Then, we manage this problem by the following method on evaluation:
 | index | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10| 11| 12| 13| 14| 15| 16| 17| 18| 19|
 |------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | y_true| O | O | B | I | O |   | O | B | I | O | I | O |   | B | I | I |   | I | I | O |
-| y_pred| O | O | B | I | O |   | O | B | I | O | O | O |   | B | I | I |   | I | O | B |
+| y_pred| O | O | B | I | O |   | O | B | I | O | O | O |   | B | I | I |   | I | O | I |
 
 2. skip blank line and concat all the tags in the sentence into a one-dimensional array.  
 
 | index | 0 | 1 | 2 | 3 | 4 | 6 | 7 | 8 | 9 | 10| 11| 13| 14| 15| 17| 18| 19|
 |------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | y_true| O | O | B | I | O | O | B | I | O | I | O | B | I | I | I | I | O |
-| y_pred| O | O | B | I | O | O | B | I | O | O | O | B | I | I | I | O | B |
+| y_pred| O | O | B | I | O | O | B | I | O | O | O | B | I | I | I | O | I |
 
-3. get phrases that start with B.  
+3. get the token index of phrases that start with B.  
 - **y_true**: 2_3, 7_8_10, 13_14_15_17_18
-- **y_pred**: 2_3, 7_8, 13_14_15_17, 19
+- **y_pred**: 2_3, 7_8, 13_14_15_17_19
 
 4. calculate metrics: [utils/metrics/ner.py](https://github.com/sy-wada/blue_benchmark_with_transformers/blob/c9dbdea715f6ecec9da2988d3abb80370d9eb271/utils/metrics/ner.py#L33-L41)  
 ```python
@@ -130,10 +130,10 @@ y_pred = set(y_pred))
 
 TP = len(y_true & y_pred)           # 1: (2_3)
 FN = len(y_true) - TP               # 2: (7_8_10, 13_14_15_17_18)
-FP = len(y_pred) - TP               # 3: (7_8, 13_14_15_17, 19)
-prec = TP / (TP + FP)               # 1 / (1 + 3) = 0.25
+FP = len(y_pred) - TP               # 2: (7_8, 13_14_15_17_19)
+prec = TP / (TP + FP)               # 1 / (1 + 2) = 0.33
 rec = TP / (TP + FN)                # 1 / (1 + 2) = 0.33
-fb1 = 2 * rec * prec / (rec + prec) # = 0.28
+fb1 = 2 * rec * prec / (rec + prec) # = 0.33
 ```
 
  
