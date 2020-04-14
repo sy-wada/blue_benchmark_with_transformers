@@ -24,23 +24,18 @@ transformers-cli convert --model_type bert \
   --pytorch_dump_output $BERT_BASE_DIR/pytorch_model.bin
 ```
 ## Our models  
-will be released as soon as they are ready...
+- Demonstration models for our research
+  * will be released as soon as they are ready.
 
 ## Results
 |            |**Total**|[MedSTS](#medsts)|[BIOSSES](#biosses)|[BC5CDR disease](#bc5cdr-disease)|[BC5CDR chemical](#bc5cdr-chemical)|[ShARe CLEFE](#shareclefe)|[DDI](#ddi)|[ChemProt](#chemprot)|[i2b2](#i2b2-2010)|[HoC](#hoc)|[MedNLI](#mednli)| 
 |:----------------|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
-| BERT-BASE       | 53.9 | 50.8 | 11.8 | 69.3 | 79.2 | 61.3 | 34.1 | 32.3 | 51.2 | 81.6 | 67.0 |
-| BioBERT (v1.1)  | 82.7 | 85.0 | 85.8 | 85.9 | 93.3 | 81.9 | 79.9 | 73.2 | 72.2 | 85.9 | 83.5 |
 | BlueBERT (P)    | 83.5 | 85.3 | 90.5 | 86.3 | 93.6 | 81.7 | 80.5 | 73.5 | 74.2 | 86.2 | 82.7 |
-| BlueBERT (P+M)  | 81.8 | 84.4 | 84.3 | 85.5 | 92.4 | 82.4 | 79.3 | 68.8 | 75.1 | 82.7 | 83.5 |
-| PubMed200 (B+W) | 81.7 | 83.2 | 88.8 | 86.7 | 92.3 | 82.1 | 78.4 | 67.8 | 72.9 | 84.9 | 80.1 |
-| BioMed (128)    | 84.1 | 83.8 | 92.9 | 87.9 | 93.8 | 83.8 | 80.8 | 75.5 | 72.9 | 86.9 | 83.1 |
-| BioMed (512)    | 84.2 | 84.4 | 91.9 | 87.7 | 94.0 | 83.4 | 81.6 | 75.8 | 72.3 | 86.9 | 83.9 |
 
 
 **Note**:  
 - Due to the size of BIOSSES, the performance is unstable.
-  * In addition to epochs and learning rate , we try multiple random seeds (n=30) and choose models in the top 100 on the development set.
+  * In addition to epochs and learning rate , we try multiple random seeds (n=20) and choose models in the top 50 (top 10%) on the development set.
   * Then, we evaluate the mean of test scores on each model.
   * It is suggested in [Peng et al. (2019)](#ypeng).  
 
@@ -88,7 +83,7 @@ will be released as soon as they are ready...
 ## Sentence similarity
 - The sentence similarity task is to predict similarity scores based on sentence pairs.
 - **Metrics**: Pearson correlation coefficients
-  + We used [scipy.stats.pearsonr()](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html).
+  + We use [scipy.stats.pearsonr()](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html).
 ### MedSTS
 ![MedSTS_hist](./img/medsts.png)  
 [MedSTS](https://mayoclinic.pure.elsevier.com/en/publications/medsts-a-resource-for-clinical-semantic-textual-similarity) is a corpus of sentence pairs selected from Mayo Clinics clinical data warehouse and was used in the BioCreative/OHNLP Challenge 2018 Task 2 ([Wang et al., 2018](#ywang), also called [ClinicalSTS](https://sites.google.com/view/ohnlp2018/home)).  
@@ -97,18 +92,54 @@ Please visit the website or contact to the 1st author to obtain a copy of the da
 ![BIOSSES_hist](./img/biosses.png)  
 [BIOSSES](https://tabilab.cmpe.boun.edu.tr/BIOSSES/) is a corpus of sentence pairs selected from the Biomedical Summarization Track Training Dataset in the biomedical domain ([Soğancıoğlu et al., 2017](#gsogancioglu)).  
 #### Known problems
-The BIOSSES dataset is very small (only 16 sentence pairs in the development set). It causes unstable performance of fine-tuning, so in addition to epochs and learning rate, we try multiple random seeds (n=30) and adopt models in the top 100 on the development set.  
+The BIOSSES dataset is very small (only 16 sentence pairs in the development set). It causes unstable performance of fine-tuning, so in addition to epochs and learning rate, we try multiple random seeds (n=20) and adopt models in the top 50 (top 10%) on the development set.  
 Then, we evaluate the mean of test scores on each model.  
 ## Named entity recognition
 - The aim of the named entity recognition task is to predict mention spans given in the text.
 - **Metrics**: strict version of F1-score (exact phrase matching).
-  + We used [conlleval.py](https://github.com/ncbi-nlp/bluebert/blob/master/bluebert/conlleval.py) from [the BlueBERT repository](https://github.com/ncbi-nlp/bluebert).
+  + We use a primitive approach descirbed below to deal with disjoint mentions.
 ### Known problems
 There are some irregular patterns:
 - **starting with I**: caused by long phrases split in the middle [(example)](#startingwithi).
 - **I next to O**: due to discontinuous mentions. It is often observed in [ShARe/CLEFE](#shareclefe) [(example)](#inexttoo).  
 
 [conlleval.py](https://github.com/ncbi-nlp/bluebert/blob/master/bluebert/conlleval.py) appears to count them as different phrases.  
+Then, we manage this problem by the following method on evaluation:  
+1. Example:  
+
+| index | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10| 11| 12| 13| 14| 15| 16| 17| 18| 19|
+|------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| y_true| O | O | B | I | O |   | O | B | I | O | I | O |   | B | I | I |   | I | I | O |
+| y_pred| O | O | B | I | O |   | O | B | I | O | O | O |   | B | I | I |   | I | O | B |
+
+2. skip blank line and concat all the tags in the sentence into a one-dimensional array.  
+
+| index | 0 | 1 | 2 | 3 | 4 | 6 | 7 | 8 | 9 | 10| 11| 13| 14| 15| 17| 18| 19|
+|------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| y_true| O | O | B | I | O | O | B | I | O | I | O | B | I | I | I | I | O |
+| y_pred| O | O | B | I | O | O | B | I | O | O | O | B | I | I | I | O | B |
+
+3. get phrases that start with B.  
+- **y_true**: 2_3, 7_8_10, 13_14_15_17_18
+- **y_pred**: 2_3, 7_8, 13_14_15_17, 19
+
+4. calculate metrics: [utils/metrics/ner.py](https://github.com/sy-wada/blue_benchmark_with_transformers/blob/c9dbdea715f6ecec9da2988d3abb80370d9eb271/utils/metrics/ner.py#L33-L41)  
+```python
+y_true = set(y_true))
+y_pred = set(y_pred))
+
+TP = len(y_true & y_pred)           # 1
+FN = len(y_true) - TP               # 3 - 1 = 2
+FP = len(y_pred) - TP               # 4 - 1 = 3
+prec = TP / (TP + FP)               # 1 / (1 + 3) = 0.25
+rec = TP / (TP + FN)                # 1 / (1 + 2) = 0.33
+fb1 = 2 * rec * prec / (rec + prec) # = 0.28
+```
+
+ 
+
+
+
 ### BC5CDR-disease
 |tag of tokens   | Train |  Dev |  Test |
 |----------------|------:|-----:|------:|
@@ -185,7 +216,7 @@ dilated	-	456	I
   1. aggregate TP, FN, and FP in each class.
   1. calculate metrics excluding the "false" class.
 - **Metrics**: micro-average F1-score.
-  + We used [pmetrics.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/ext/pmetrics.py) from [the BLUE benchmark repository](https://github.com/ncbi-nlp/BLUE_Benchmark) to calculate micro-average.
+  + We use [sklearn.metrics.confusion_matrix()](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html) and compute TP, FP, FN and TN on each class.
 
 ### DDI
 | class        | Train |  Dev |  Test | note |
@@ -258,12 +289,12 @@ dilated	-	456	I
   1. predict multi-labels for each sentence in the document.
   1. combine the labels in one document and compare them with the gold-standard.
 - **Metrics**: example-based F1-score on the abstract level ([Zhang and Zhou, 2014](#zz); [Du et al., 2019](#jdu)).
-  + We used [pmetrics.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/ext/pmetrics.py) and [eval_hoc.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/eval_hoc.py) from [the BLUE benchmark repository](https://github.com/ncbi-nlp/BLUE_Benchmark) to calculate the metrics.
+  + We use [eval_hoc.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/eval_hoc.py) from [the BLUE benchmark repository](https://github.com/ncbi-nlp/BLUE_Benchmark) to calculate the metrics.
 
 ## Inference task
 - The aim of the inference task is to predict whether the premise sentence entails or contradicts the hypothesis sentence.
 - **Metrics**: overall accuracy
-  + We used classification_report() in [pmetrics.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/ext/pmetrics.py).
+  + We use [sklearn.metrics.confusion_matrix()](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html) and compute TP, FP, FN and TN on each class.
 
 ### MedNLI
 | class        | Train |  Dev |  Test |
@@ -281,7 +312,7 @@ Following the practice in  [Peng et al. (2019)](#ypeng), we use a macro-average 
 The results are [above](#results).
 
 ## Citing
-currently being prepared...  
+currently being prepared.
 ## Acknowledgments
 We are grateful to the authors of BERT to make the data and codes publicly available. We thank the NVIDIA team because their implimentation of [BERT for PyTorch](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT) enables us to pre-train BERT models on our local machine. We would also like to take this opportunity to thank Yifan Peng and shared task organizers for publishing BLUE benchmark.  
 This work was supported by Council for Science, Technology and Innovation (CSTI), cross-ministerial Strategic Innovation Promotion Program (SIP), "Innovative AI Hospital System" (Funding Agency: National Instisute of Biomedical Innovation, Health and Nutrition (NIBIOHN)).
