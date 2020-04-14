@@ -128,9 +128,9 @@ Then, we manage this problem by the following method on evaluation:
 y_true = set(y_true))
 y_pred = set(y_pred))
 
-TP = len(y_true & y_pred)           # 1
-FN = len(y_true) - TP               # 3 - 1 = 2
-FP = len(y_pred) - TP               # 4 - 1 = 3
+TP = len(y_true & y_pred)           # 1: (2_3)
+FN = len(y_true) - TP               # 2: (7_8_10, 13_14_15_17_18)
+FP = len(y_pred) - TP               # 3: (7_8, 13_14_15_17, 19)
 prec = TP / (TP + FP)               # 1 / (1 + 3) = 0.25
 rec = TP / (TP + FN)                # 1 / (1 + 2) = 0.33
 fb1 = 2 * rec * prec / (rec + prec) # = 0.28
@@ -259,6 +259,8 @@ dilated	-	456	I
 
 [i2b2 2010](https://www.i2b2.org/NLP/DataSets/) shared task collection consists of 170 documents for training and 256 documents for testing, which is the subset of the original dataset ([Uzuner et al., 2011](#ouzuner)).
 
+#### Known problems
+The development dataset is very small, so it is a difficult to determine the best model.  
 ## Document multilabel classification
 - The multilabel classification task predicts multiple labels from the texts.
 
