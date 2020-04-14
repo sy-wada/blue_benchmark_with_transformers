@@ -21,22 +21,20 @@ Please change the following variables to suit your environment:
 `$CODE_DIR`: where you downloaded this repository  
 `$DATASET_DIR`: a dataset directory for each task  
 `$MODEL_DIR`: where the pre-trained model is saved  
-## Table of Contents
-- [Sentence similarity](#sentence-similarity)
-  * [MedSTS](#medsts)
-  * [BIOSSES](#biosses)
-- [Named Entity Recognition](#named-entity-recognition)
-  * [BC5CDR-disease](#bc5cdr-disease)
-  * [BC5CDR-chemical](#bc5cdr-chemical)
-  * [ShARe/CLEFE](#shareclefe)
-- [Relation Extraction](#relation-extraction)
-  * [DDI](#ddi)
-  * [ChemProt](#chemprot)
-  * [i2b2 2010](#i2b2-2010)
-- [Document multilabel classification](#document-multilabel-classification)
-  * [HoC](#hoc)
-- [Inference task](#inference-task)
-  * [MedNLI](#mednli)
+## Overview
+| Task                                | learning rate | epochs | seed | dev_score | test_score |
+|:------------------------------------|--------------:|-------:|-----:|----------:|-----------:|
+| [MedSTS](#medsts)                   | 5e-5          |  9     | 12   |  87.2     | 85.3       |
+| [BIOSSES](#biosses)                 | 4e-5          | 50     |  4   |  92.5     | 93.6       |
+| [BC5CDR-disease](#bc5cdr-disease)   | 2e-5          | 20     | 12   | 100.0     | 86.3       |
+| [BC5CDR-chemical](#bc5cdr-chemical) | 4e-5          | 30     | 12   |  99.9     | 93.6       |
+| [ShARe/CLEFE](#shareclefe)          | 2e-5          | 30     | 12   |  99.2     | 81.7       |
+| [DDI](#ddi)                         | 2e-5          |  6     | 12   |  85.8     | 80.5       |
+| [ChemProt](#chemprot)               | 5e-5          |  5     | 12   |  76.4     | 73.5       |
+| [i2b2 2010](#i2b2-2010)             | 5e-5          |  5     | 12   |  63.2     | 74.2       |
+| [HoC](#hoc)                         | 5e-5          |  5     | 12   |  87.7     | 86.2       |
+| [MedNLI](#mednli)                   | 4e-5          | 15     | 12   |  84.8     | 82.7       |
+
 -----  
 ## Sentence similarity
 ### MedSTS
@@ -85,7 +83,7 @@ python $CODE_DIR/utils/run_sts.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/biosses \
-  --learning_rate=5e-5 \
+  --learning_rate=4e-5 \
   --num_train_epochs=50 \
   --logging_steps=0 \
   --save_steps=0 \
@@ -94,7 +92,7 @@ python $CODE_DIR/utils/run_sts.py \
   --per_gpu_train_batch_size=32 \
   --per_gpu_eval_batch_size=32 \
   --gradient_accumulation_steps=1 \
-  --seed=16 \
+  --seed=4 \
   --do_lower_case \
   --fp16
 ```
@@ -237,8 +235,8 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/i2b2_2010 \
-  --learning_rate=1e-5 \
-  --num_train_epochs=10 \
+  --learning_rate=5e-5 \
+  --num_train_epochs=5 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -268,8 +266,8 @@ python $CODE_DIR/utils/run_multi_label_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/hoc \
-  --learning_rate=4e-5 \
-  --num_train_epochs=10 \
+  --learning_rate=5e-5 \
+  --num_train_epochs=5 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -298,8 +296,8 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/mednli \
-  --learning_rate=3e-5 \
-  --num_train_epochs=10 \
+  --learning_rate=4e-5 \
+  --num_train_epochs=15 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
