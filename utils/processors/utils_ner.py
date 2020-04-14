@@ -81,8 +81,8 @@ class DataProcessor(object):
             words = []
             labels = []
             for line in f:
-                contends = line.strip()
-                if len(contends) == 0:
+                contents = line.strip()
+                if len(contents) == 0:
                     assert len(words) == len(labels)
                     if len(words) > 30:
                         # split if the sentence is longer than 30
@@ -191,8 +191,8 @@ class CLEFEProcessor(DataProcessor):
             words = []
             labels = []
             for line in f:
-                contends = line.strip()
-                if len(contends) == 0:
+                contents = line.strip()
+                if len(contents) == 0:
                     assert len(words) == len(labels)
                     if len(words) > 30:
                         # split if the sentence is longer than 30
@@ -218,7 +218,7 @@ class CLEFEProcessor(DataProcessor):
                     words = []
                     labels = []
                     continue
-                elif contends.startswith('###'):
+                elif contents.startswith('###'):
                     continue
 
                 word = line.strip().split()[0]
