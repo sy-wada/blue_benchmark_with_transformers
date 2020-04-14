@@ -12,8 +12,6 @@ We modified some problems:
 import pandas as pd
 import numpy as np
 
-from .pmetrics import divide
-
 from sklearn.metrics import roc_curve, auc
 
 # Compute ROC curve and ROC area for each class
@@ -30,11 +28,6 @@ def eval_roc_auc(y_true, pred_score, num_labels):
     fpr["micro"], tpr["micro"], _ = roc_curve(y_true.ravel(), pred_score.ravel())
     roc_auc["micro"] = auc(fpr["micro"], tpr["micro"])
     return roc_auc
-
-LABELS = ['activating invasion and metastasis', 'avoiding immune destruction',
-          'cellular energetics', 'enabling replicative immortality', 'evading growth suppressors',
-          'genomic instability and mutation', 'inducing angiogenesis', 'resisting cell death',
-          'sustaining proliferative signaling', 'tumor promoting inflammation']
 
 #ADD:
 LABELS = []
@@ -82,7 +75,7 @@ def get_p_r_f_arrary(test_predict_label, test_true_label):
 
     mean_prc = np.mean(prc_list)
     mean_rec = np.mean(rec_list)
-    f_score = divide(2 * mean_prc * mean_rec, (mean_prc + mean_rec))
+    f_score = 2 * mean_prc * mean_rec / (mean_prc + mean_rec)
     return mean_prc, mean_rec, f_score
 
 
@@ -94,8 +87,6 @@ def eval_hoc(df, mode):
     """
     data = {}
 
-#     true_df = pd.read_csv(true_file, sep='\t')
-#     pred_df = pd.read_csv(pred_file, sep='\t')
     true_df = df.drop('pred_labels', axis=1)
     pred_df = df.drop('labels', axis=1).rename(columns={'pred_labels': 'labels'})
 
@@ -149,9 +140,6 @@ def eval_hoc(df, mode):
     y_pred = np.array(y_pred)
 
     p, r, f1 = get_p_r_f_arrary(y_pred, y_test)
-#     print('Precision: {:.1f}'.format(p*100))
-#     print('Recall   : {:.1f}'.format(r*100))
-#     print('F1       : {:.1f}'.format(f1*100))
     results = {
         "precision": p,
         "recall": r,
