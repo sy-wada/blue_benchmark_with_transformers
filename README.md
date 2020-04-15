@@ -26,15 +26,19 @@ transformers-cli convert --model_type bert \
 ## Our models  
 - Demonstration models for our research
   * [BioMed-Base, Uncased, PubMed (demo)](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v0.1)  #20200415
+    - **The best score on BLUE**
+    - max_seq_length=128
+  * PubMed200 (B+W) # now fine-tuning for evaluation
+    - trained from a small biomedical corpus (PubMed abstracts: 200MB) with BooksCorpus and Wikipedia.
 
 ## Results
 |            |**Total**|[MedSTS](#medsts)|[BIOSSES](#biosses)|[BC5CDR disease](#bc5cdr-disease)|[BC5CDR chemical](#bc5cdr-chemical)|[ShARe CLEFE](#shareclefe)|[DDI](#ddi)|[ChemProt](#chemprot)|[i2b2](#i2b2-2010)|[HoC](#hoc)|[MedNLI](#mednli)| 
 |:------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| BioMed (P) demo         |**83.7**|  83.8  |**93.1**|**87.4**|**93.7**|**80.3**|**80.8**|**75.5**|  72.9  |**86.9**|**83.1**|
+| BioMed (P) demo         |**83.7**|  83.8  |**93.1**|**87.4**|**93.6**|**80.3**|**80.8**|**75.5**|  72.9  |**86.9**|**83.1**|
 | BlueBERT (P)            |  83.0  |**85.3**|  90.8  |  85.6  |  93.3  |  77.6  |  80.5  |  73.5  |**74.2**|  86.2  |  82.7  |
 | ...                     | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    |
 
-Table: Test performances of all BERT variants on all tasks and datasets. **Bold** indicates the best result of all.  
+Table: Test performances of all BERT-Base variants for the biomedical domain and our models on all tasks, as of April 2020. **Bold** indicates the best result of all.  
 
 **Note**:  
 - Due to the size of BIOSSES, the performance is unstable.
@@ -259,7 +263,7 @@ dilated	-	456	I
 [i2b2 2010](https://www.i2b2.org/NLP/DataSets/) shared task collection consists of 170 documents for training and 256 documents for testing, which is the subset of the original dataset ([Uzuner et al., 2011](#ouzuner)).
 
 #### Known problems
-The development dataset is very small, so it is a difficult to determine the best model.  
+The development dataset is very small, so it is difficult to determine the best model.  
 ## Document multilabel classification
 - The multilabel classification task predicts multiple labels from the texts.
 
