@@ -94,7 +94,7 @@ Please visit the website or contact to the 1st author to obtain a copy of the da
 ![BIOSSES_hist](./img/biosses.png)  
 [BIOSSES](https://tabilab.cmpe.boun.edu.tr/BIOSSES/) is a corpus of sentence pairs selected from the Biomedical Summarization Track Training Dataset in the biomedical domain ([Soğancıoğlu et al., 2017](#gsogancioglu)).  
 #### Known problems
-The BIOSSES dataset is very small (only 16 sentence pairs in the development set). It causes unstable performance of fine-tuning, so in addition to epochs and learning rate, we try multiple random seeds (n=20) and adopt models in the top 50 (top 10%) on the development set.  
+The BIOSSES dataset is very small (only 16 sentence pairs in the development set). It causes unstable performance of fine-tuning, so in addition to epochs and learning rate, we run with different random seed (n=20) and adopt models in the top 50 (top 10%) on the development set.  
 Then, we evaluate the mean of test scores on each model.  
 ## Named entity recognition
 - The aim of the named entity recognition task is to predict mention spans given in the text.
@@ -130,17 +130,13 @@ Then, we manage this problem by the following method on evaluation:
 y_true = set(y_true))
 y_pred = set(y_pred))
 
-TP = len(y_true & y_pred)           # 1: (2_3)
-FN = len(y_true) - TP               # 2: (7_8_10, 13_14_15_17_18)
-FP = len(y_pred) - TP               # 2: (7_8, 13_14_15_17_19)
+TP = len(y_true & y_pred)           # 1: {2_3}
+FN = len(y_true) - TP               # 2: {7_8_10, 13_14_15_17_18}
+FP = len(y_pred) - TP               # 2: {7_8, 13_14_15_17_19}
 prec = TP / (TP + FP)               # 1 / (1 + 2) = 0.33
 rec = TP / (TP + FN)                # 1 / (1 + 2) = 0.33
 fb1 = 2 * rec * prec / (rec + prec) # = 0.33
 ```
-
- 
-
-
 
 ### BC5CDR-disease
 |tag of tokens   | Train |  Dev |  Test |
