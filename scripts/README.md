@@ -5,7 +5,7 @@ Please keep in mind that different environments may produce different results fr
 
 - Our models
   - will be available soon.
-- BERT-Base, Uncased ([Devlin et al., (2019)](#bert))
+- BERT-Base (L-12_H-768_A-12), Uncased ([Devlin et al., (2019)](#bert))
   - **Vocabulary**: BERT-Base (WordPiece tokenization ([Wu et al., 2016](#wordpiece)))
   - **Pre-training**:
     - trained from scratch.
