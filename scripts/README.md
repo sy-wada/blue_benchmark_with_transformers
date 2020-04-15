@@ -27,6 +27,17 @@ Please keep in mind that different environments may produce different results fr
         - **number of tokens processed in pre-training** :  
           128 tokens x 65,536 sequences x 7,038 steps  
           +512 tokens x 32,768 sequences x 1,563 steps = **85B tokens**
+  - PubMed200 (B+W), Uncased
+    - **Vocabulary**: custom 32k vocabulary
+    - **Pre-training**:
+      - trained from scratch.
+      - pre-trained on a small corpus of PubMed abstracts (200MB) with BooksCorpus (5GB) + Wikipedia (13GB).
+      - **setting**:  
+        - **max_seq_length** = 128 tokens
+        - **global_batch_size** = 2,048 sequences
+        - **steps** = 125K steps
+        - **number of tokens processed in pre-training** :  
+          128 tokens x 2,048 sequences x 125K steps = **33B tokens**
 - BERT-Base (L-12_H-768_A-12), Uncased ([Devlin et al., (2019)](#bert))
   - **Vocabulary**: BERT-Base (WordPiece tokenization ([Wu et al., 2016](#wordpiece)))
   - **Pre-training**:
