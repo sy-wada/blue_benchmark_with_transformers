@@ -37,7 +37,7 @@ Table: Test performances of all BERT variants on all tasks and datasets. **Bold*
 
 **Note**:  
 - Due to the size of BIOSSES, the performance is unstable.
-  * In addition to epochs and learning rate , we try multiple random seeds (n=20) and choose models in the top 50 (top 10%) on the development set.
+  * In addition to epochs and learning rate , we run with different random seeds (n=20) and choose models in the top 50 (top 10%) on the development set.
   * Then, we evaluate the mean of test scores on each model.
   * It is suggested in [Peng et al. (2019)](#ypeng).  
 
