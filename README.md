@@ -25,7 +25,7 @@ transformers-cli convert --model_type bert \
 ```
 ## Our models  
 - Demonstration models for our research
-  * [BioMed-Base, Uncased, PubMed (demo)](./releases/tag/v0.1)  #20200415
+  * [BioMed-Base, Uncased, PubMed (demo)](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v0.1)  #20200415
 
 ## Results
 |            |**Total**|[MedSTS](#medsts)|[BIOSSES](#biosses)|[BC5CDR disease](#bc5cdr-disease)|[BC5CDR chemical](#bc5cdr-chemical)|[ShARe CLEFE](#shareclefe)|[DDI](#ddi)|[ChemProt](#chemprot)|[i2b2](#i2b2-2010)|[HoC](#hoc)|[MedNLI](#mednli)| 
