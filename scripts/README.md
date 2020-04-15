@@ -86,7 +86,7 @@ Please keep in mind that different environments may produce different results fr
         - **steps** = 150K steps
         - **number of tokens processed in pre-training** :  
           128 tokens x 32 sequences x 150K steps = **614M tokens**
-  - clinicalBERT-Base, Cased (Bio+Discharge Summary BERT) ([Alsentzer et al., 2019](#clinicalbert))
+  - clinicalBERT-Base, Cased (Bio+Discharge Summary BERT)
     - **Vocabulary**: BERT-Base
     - **Pre-training**:
       - initialized from [BioBERT-Base v1.0 (+ PubMed 200K + PMC 270K)](https://github.com/naver/biobert-pretrained).
