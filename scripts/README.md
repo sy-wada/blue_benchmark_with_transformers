@@ -10,13 +10,23 @@ Please keep in mind that different environments may produce different results fr
       - trained from scratch.
       - pre-trained on PubMed abstracts.
       - **setting**: almost same as [BERT For PyTorch](https://github.com/NVIDIA/DeepLearningExamples/blob/master/PyTorch/LanguageModeling/BERT/scripts/run_pretraining.sh) by NVIDIA, but modified to allow us to run on our local machine.
+        - **max_seq_length** = (phase1) 128 tokens
+        - **global_batch_size** = (phase1) 65,536 sequences
+        - **steps** = (phase1) 7,038 steps
+        - **number of tokens processed in pre-training** :  
+          128 tokens x 65,536 sequences x 7,038 steps = **59B tokens**
+  - BioMed-Base, Uncased, PubMed
+    - **Vocabulary**: custom 32k vocabulary
+    - **Pre-training**:
+      - initialized from [BioMed-Base, Uncased, PubMed (demo)](./BioMed-Base-Uncased_P_demo) and run with additional steps on max_seq_length=512.
+      - pre-trained on PubMed abstracts.
+      - **setting**: almost same as [BERT For PyTorch](https://github.com/NVIDIA/DeepLearningExamples/blob/master/PyTorch/LanguageModeling/BERT/scripts/run_pretraining.sh) by NVIDIA, but modified to allow us to run on our local machine.
         - **max_seq_length** = (phase1) 128 tokens/ (phase2) 512 tokens
         - **global_batch_size** = (phase1) 65,536 sequences/ (phase2) 32,768 sequences
         - **steps** = (phase1) 7,038 steps/ (phase2) 1,563 steps
         - **number of tokens processed in pre-training** :  
           128 tokens x 65,536 sequences x 7,038 steps  
           +512 tokens x 32,768 sequences x 1,563 steps = **85B tokens**
-  
 - BERT-Base (L-12_H-768_A-12), Uncased ([Devlin et al., (2019)](#bert))
   - **Vocabulary**: BERT-Base (WordPiece tokenization ([Wu et al., 2016](#wordpiece)))
   - **Pre-training**:
