@@ -7,7 +7,7 @@ Thank you for your interest in our research!
 [Biomedical Language Understanding Evaluation (BLUE) benchmark](https://github.com/ncbi-nlp/BLUE_Benchmark) is a collection of resources for evaluating and analyzing biomedical
 natural language representation models ([Peng et al., 2019](#ypeng)).  
 This repository provides our implementation of fine-tuning for BLUE benchmark with [🤗Transformers](https://github.com/huggingface/transformers).  
-Our demonstration models will be available soon.
+[Our demonstration model](#our-models) is available now.
 ## Preparations
 1. Download the benchmark dataset from https://github.com/ncbi-nlp/BLUE_Benchmark
 1. Save  pre-trained models to your directory. For example, [BioBERT](https://github.com/dmis-lab/biobert), [clinicalBERT](https://github.com/EmilyAlsentzer/clinicalBERT), [SciBERT](https://github.com/allenai/scibert), [BlueBERT](https://github.com/ncbi-nlp/bluebert) and so on.
@@ -25,7 +25,7 @@ transformers-cli convert --model_type bert \
 ```
 ## Our models  
 - Demonstration models for our research
-  * will be released as soon as they are ready.
+  * [BioMed-Base, Uncased, PubMed (demo)](./releases/tag/v0.1)  #20200415
 
 ## Results
 |            |**Total**|[MedSTS](#medsts)|[BIOSSES](#biosses)|[BC5CDR disease](#bc5cdr-disease)|[BC5CDR chemical](#bc5cdr-chemical)|[ShARe CLEFE](#shareclefe)|[DDI](#ddi)|[ChemProt](#chemprot)|[i2b2](#i2b2-2010)|[HoC](#hoc)|[MedNLI](#mednli)| 
