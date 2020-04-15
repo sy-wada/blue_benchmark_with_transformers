@@ -77,7 +77,7 @@ Table: Test performances of all BERT variants on all tasks and datasets. **Bold*
 | ShARe/CLEFE     |  4628 | 1065 | 5195 | Named entity recognition| F1                  | Clinical   |
 | DDI             |  2937 | 1004 |  979 | Relation extraction     | micro F1            | Biomedical |
 | ChemProt        |  4154 | 2416 | 3458 | Relation extraction     | micro F1            | Biomedical |
-| i2b2-2010       |  3110 |   11 | 6293 | Relation extraction     | micro F1            | Clinical   |
+| i2b2-2010       |  3110 |   10 | 6293 | Relation extraction     | micro F1            | Clinical   |
 | HoC             |  1108 |  157 |  315 | Document classification | F1                  | Biomedical |
 | MedNLI          | 11232 | 1395 | 1422 | Inference               | accuracy            | Clinical   |
 
