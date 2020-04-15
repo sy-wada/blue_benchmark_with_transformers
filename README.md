@@ -296,7 +296,7 @@ The development dataset is very small, so it is a difficult to determine the bes
 ## Inference task
 - The aim of the inference task is to predict whether the premise sentence entails or contradicts the hypothesis sentence.
 - **Metrics**: overall accuracy
-  + We use [sklearn.metrics.confusion_matrix()](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html) and compute TP, FP, FN and TN on each class.
+  + We use [sklearn.metrics.confusion_matrix()](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html) and [sklearn.metrics.accuracy_score()](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) to compute TP, FP, FN and TN on each class and overall accuracy.
 
 ### MedNLI
 | class        | Train |  Dev |  Test |
