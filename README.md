@@ -231,7 +231,7 @@ dilated	-	456	I
 |DDI-false     | 15842 | 6240 |  4782 | |
 |**Total**     |  2937<br>+15842| 1004<br>+6240 |  979<br>+4782 | |
 
-[DDI](http://labda.inf.uc3m.es/ddicorpus) extraction 2013 corpus is a collection of 792 texts selected from the DrugBank database and other 233 Medline abstracts ([Herrero-Zazo et al., 2013](#hzazo)).
+[DDI](https://github.com/isegura/DDICorpus) extraction 2013 corpus is a collection of 792 texts selected from the DrugBank database and other 233 Medline abstracts ([Herrero-Zazo et al., 2013](#hzazo)).
 
 ### ChemProt
 | class | Train |  Dev |  Test | note |
