@@ -38,7 +38,7 @@ transformers-cli convert --model_type bert \
 | BlueBERT (P)            |  83.0  |**85.3**|  90.8  |  85.6  |  93.3  |  77.6  |  80.5  |  73.5  |**74.2**|  86.2  |  82.7  |
 | ...                     | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    |
 
-Table: Test performances of all BERT-Base variants for the biomedical domain and our models on all tasks, as of April 2020. **Bold** indicates the best result of all.  
+Table: Test performances of all BERT-Base variants for the biomedical domain as of April 2020 and our models on all tasks. **Bold** indicates the best result of all.  
 
 **Note**:  
 - Due to the size of BIOSSES, the performance is unstable.
@@ -99,7 +99,7 @@ Please visit the website or contact to the 1st author to obtain a copy of the da
 ![BIOSSES_hist](./img/biosses.png)  
 [BIOSSES](https://tabilab.cmpe.boun.edu.tr/BIOSSES/) is a corpus of sentence pairs selected from the Biomedical Summarization Track Training Dataset in the biomedical domain ([Soğancıoğlu et al., 2017](#gsogancioglu)).  
 #### Known problems
-The BIOSSES dataset is very small (only 16 sentence pairs in the development set). It causes unstable performance of fine-tuning, so in addition to epochs and learning rate, we run with different random seed (n=20) and adopt models in the top 50 (top 10%) on the development set.  
+The BIOSSES dataset is very small (only 16 sentence pairs in the development set). It causes unstable performance of fine-tuning, so in addition to epochs and learning rate, we run with different random seeds (n=20) and adopt models in the top 50 (top 10%) on the development set.  
 Then, we evaluate the mean of test scores on each model.  
 ## Named entity recognition
 - The aim of the named entity recognition task is to predict mention spans given in the text.
