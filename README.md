@@ -132,8 +132,8 @@ Then, we manage this problem by the following method on evaluation:
 
 4. calculate metrics: [utils/metrics/ner.py](https://github.com/sy-wada/blue_benchmark_with_transformers/blob/c9dbdea715f6ecec9da2988d3abb80370d9eb271/utils/metrics/ner.py#L33-L41)  
 ```python
-y_true = set(y_true))
-y_pred = set(y_pred))
+y_true = set(y_true)
+y_pred = set(y_pred)
 
 TP = len(y_true & y_pred)           # 1: {2_3}
 FN = len(y_true) - TP               # 2: {7_8_10, 13_14_15_17_18}
