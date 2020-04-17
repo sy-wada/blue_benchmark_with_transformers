@@ -62,7 +62,7 @@ Please keep in mind that different environments may produce different results fr
         - **steps** = 5M steps
         - **number of tokens processed in pre-training** :  
           128 tokens x 256(32?) sequences x 5M steps = **164B(21B?) tokens**
-  - BlueBERT-Base, Uncased, PubMed+MIMIC-III ([Peng et al., 2019](#bluebert))
+  - [BlueBERT-Base, Uncased, PubMed+MIMIC-III](./BlueBERT-Base-Uncased_PM)
     - **Vocabulary**: BERT-Base
     - **Pre-training**:
       - initialized from BERT-Base-Uncased.
@@ -108,7 +108,7 @@ Please keep in mind that different environments may produce different results fr
         - **steps** = 150K steps
         - **number of tokens processed in pre-training** :  
           128 tokens x 32 sequences x 150K steps = **614M tokens**
-- BioBERT-Base, Cased v1.1 (+ PubMed 1M) ([Lee et al., 2019](#biobert))
+- [BioBERT-Base, Cased v1.1 (+ PubMed 1M)](./BioBERT-Base-Cased_v1.1) ([Lee et al., 2019](#biobert))
   - **Vocabulary**: custom 30k vocabulary
   - **Pre-training**:
     - trained from scratch.
