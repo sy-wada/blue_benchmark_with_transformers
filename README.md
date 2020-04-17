@@ -34,8 +34,10 @@ transformers-cli convert --model_type bert \
 ## Results
 |            |**Total**|[MedSTS](#medsts)|[BIOSSES](#biosses)|[BC5CDR disease](#bc5cdr-disease)|[BC5CDR chemical](#bc5cdr-chemical)|[ShARe CLEFE](#shareclefe)|[DDI](#ddi)|[ChemProt](#chemprot)|[i2b2](#i2b2-2010)|[HoC](#hoc)|[MedNLI](#mednli)| 
 |:------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| BioMed (P) demo         |**83.7**|  83.8  |**93.1**|**87.4**|**93.6**|**80.3**|**80.8**|**75.5**|  72.9  |**86.9**|**83.1**|
-| BlueBERT (P)            |  83.0  |**85.3**|  90.8  |  85.6  |  93.3  |  77.6  |  80.5  |  73.5  |**74.2**|  86.2  |  82.7  |
+| BioMed (P) demo         |**83.7**|  83.8  |**93.1**|**87.4**|**93.7**|**80.3**|**80.8**|**75.5**|  72.9  |**86.9**|  83.1  |
+| BlueBERT (P)            |  83.0  |**85.3**|  90.8  |  85.6  |  93.5  |  77.6  |  80.5  |  73.5  |  74.2  |  86.2  |  82.7  |
+| BlueBERT (P+M)          |  81.4  |  84.4  |  84.7  |  84.6  |  92.2  |  78.0  |  79.3  |  68.8  |**75.7**|  82.7  |**83.7**|
+| BioBERT (v1.1)          |  81.9  |  85.0  |  84.3  |  85.6  |  93.2  |  76.9  |  79.9  |  73.2  |  72.2  |  85.9  |  83.1  |
 | ...                     | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    |
 
 Table: Test performances of all BERT-Base variants for the biomedical domain as of April 2020 and our models on all tasks. **Bold** indicates the best result of all.  
