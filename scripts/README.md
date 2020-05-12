@@ -4,7 +4,7 @@ The optimal hyperparameters we have searched are described here.
 Please keep in mind that different environments may produce different results from ours.
 
 - Our models
-  - [BioMed-Base, Uncased, PubMed (demo)](./BioMed-Base-Uncased_P_demo)
+  - [ouBioBERT-Base, Uncased (demo)](./BioMed-Base-Uncased_P_demo)
     - **Vocabulary**: custom 32k vocabulary
     - **Pre-training**:
       - trained from scratch.
@@ -15,10 +15,10 @@ Please keep in mind that different environments may produce different results fr
         - **steps** = (phase1) 7,038 steps
         - **number of tokens processed in pre-training** :  
           128 tokens x 65,536 sequences x 7,038 steps = **59B tokens**
-  - BioMed-Base, Uncased, PubMed
+  - ouBioBERT-Base, Uncased (full)
     - **Vocabulary**: custom 32k vocabulary
     - **Pre-training**:
-      - initialized from [BioMed-Base, Uncased, PubMed (demo)](./BioMed-Base-Uncased_P_demo) and run with additional steps on max_seq_length=512.
+      - initialized from [ouBioBERT-Base, Uncased (demo)](./BioMed-Base-Uncased_P_demo) and run with additional steps on max_seq_length=512.
       - pre-trained on PubMed abstracts.
       - **setting**: almost same as [BERT For PyTorch](https://github.com/NVIDIA/DeepLearningExamples/blob/master/PyTorch/LanguageModeling/BERT/scripts/run_pretraining.sh) by NVIDIA, but modified to allow us to run on our local machine.
         - **max_seq_length** = (phase1) 128 tokens/ (phase2) 512 tokens
@@ -27,7 +27,7 @@ Please keep in mind that different environments may produce different results fr
         - **number of tokens processed in pre-training** :  
           128 tokens x 65,536 sequences x 7,038 steps  
           +512 tokens x 32,768 sequences x 1,563 steps = **85B tokens**
-  - PubMed200 (B+W), Uncased
+  - BERT (sP+B+W), Uncased
     - **Vocabulary**: custom 32k vocabulary
     - **Pre-training**:
       - trained from scratch.
