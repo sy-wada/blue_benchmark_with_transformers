@@ -125,7 +125,7 @@ Please visit the website or contact to the 1st author to obtain a copy of the da
 ![BIOSSES_hist](./img/biosses.png)  
 [BIOSSES](https://tabilab.cmpe.boun.edu.tr/BIOSSES/) is a corpus of sentence pairs selected from the Biomedical Summarization Track Training Dataset in the biomedical domain ([Soğancıoğlu et al., 2017](#gsogancioglu)).  
 #### Known problems
-The BIOSSES dataset is very small (only 16 sentence pairs in the development set). It causes unstable performance of fine-tuning.  
+The BIOSSES dataset is very small, so it causes unstable performance of fine-tuning.  
 ## Named entity recognition
 - The aim of the named entity recognition task is to predict mention spans given in the text.
 - **Metrics**: strict version of F1-score (exact phrase matching).
