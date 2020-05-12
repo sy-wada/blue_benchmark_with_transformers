@@ -24,23 +24,44 @@ transformers-cli convert --model_type bert \
   --pytorch_dump_output $BERT_BASE_DIR/pytorch_model.bin
 ```
 ## Our models  
-- Demonstration models for our research
-  * [BioMed-Base, Uncased, PubMed (demo)](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v0.1)  #20200415
-    - **The best score on BLUE**
-    - max_seq_length=128
-  * PubMed200 (B+W) # now fine-tuning for evaluation
-    - trained from a small biomedical corpus (PubMed abstracts: 200MB) with BooksCorpus and Wikipedia.
+|Abbr. | Corpus                   | Words  | Size  | Domain     |
+|:----:|:-------------------------|-------:|------:|:-----------|
+|enW   | English Wikipedia        | 2,200M |  13GB | General    |
+|B     | BooksCorpus              |   850M |   5GB | General    |
+|sP    | Small PubMed abstracts   |    30M | 0.2GB | BioMedical |
+|fP    | Focused PubMed abstracts |   280M | 1.8GB | BioMedical |
+|oP    | Other PubMed abstracts   | 2,800M |  18GB | BioMedical |
 
+Table: List of text corpora used for our models.  
+- Small PubMed abstracts (sP): extracted from [PubMed baseline](ftp://ftp.ncbi.nlm.nih.gov/pubmed/baseline) more associated with clinical research and translational research of human disease by using each MeSH IDs.
+- Focused PubMed abstracts (fP): articles more related to human beings.
+- Other PubMed abstracts (oP): articles other than Focused PubMed abstracts.  
+
++ **Demonstration models for our research**
+  * ouBioBERT-Base, Uncased  #coming soon...
+    - **The best score on the BLUE benchmark**
+    - trained on fP+oP
+    - max_seq_length=512
+    - will be community-uploaded on Hugging Face, refer to [https://huggingface.co/models](https://huggingface.co/models).
+  * [ouBioBERT-Base, Uncased (demo)](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v0.1)  #20200415
+    - trained on fP+oP
+    - max_seq_length=128
+  * BERT (sP+B+W) # 20200512
+    - trained on a small biomedical corpus with BooksCorpus and Wikipedia.
+    - a validation model for our method.
 ## Results
 |            |**Total**|[MedSTS](#medsts)|[BIOSSES](#biosses)|[BC5CDR disease](#bc5cdr-disease)|[BC5CDR chemical](#bc5cdr-chemical)|[ShARe CLEFE](#shareclefe)|[DDI](#ddi)|[ChemProt](#chemprot)|[i2b2](#i2b2-2010)|[HoC](#hoc)|[MedNLI](#mednli)| 
 |:------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| BioMed (P) demo         |**83.7**|  83.8  |**93.1**|**87.4**|**93.7**|**80.3**|**80.8**|**75.5**|  72.9  |**86.9**|  83.1  |
-| BlueBERT (P)            |  83.0  |**85.3**|  90.8  |  85.6  |  93.5  |  77.6  |  80.5  |  73.5  |  74.2  |  86.2  |  82.7  |
-| BlueBERT (P+M)          |  81.4  |  84.4  |  84.7  |  84.6  |  92.2  |  78.0  |  79.3  |  68.8  |**75.7**|  82.7  |**83.7**|
-| BioBERT (v1.1)          |  81.9  |  85.0  |  84.3  |  85.6  |  93.2  |  76.9  |  79.9  |  73.2  |  72.2  |  85.9  |  83.1  |
-| ...                     | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    | ...    |
+| *ouBioBERT-demo*        | *83.9* | *83.8* | *92.8* | *86.9* | *93.7* | *80.3* | *80.8* | *75.5* | *75.0* | *86.9* | *83.1* |
+| BERT (sP+B+W)           |  81.4  |  83.2  |  89.7  |  85.7  |  91.8  |  79.1  |  78.4  |  67.5  |  73.1  |  85.3  |  80.1  |
+| BERT-BASE               |  54.8  |  52.1  |  34.9  |  66.5  |  76.7  |  56.1  |  35.3  |  29.8  |  51.1  |  78.2  |  67.0  |
+| BioBERT (v1.1)          |**82.9**|  85.0  |**90.9**|  85.8  |  93.2  |  76.9  |  80.9  |  73.2  |  74.2  |  85.9  |  83.1  |
+| clinicalBERT            |  81.2  |  82.7  |  88.0  |  84.6  |  92.5  |  78.0  |  76.9  |  67.6  |  74.3  |  86.1  |  81.4  |
+| SciBERT                 |  82.0  |  84.0  |  85.5  |  85.9  |  92.7  |  77.7  |  80.1  |  71.9  |  73.3  |  85.9  |**83.2**|
+| BlueBERT (P)            |  82.9  |**85.3**|  88.5  |**86.2**|**93.5**|  77.7  |**81.2**|**73.5**|  74.2  |**86.2**|  82.7  |
+| BlueBERT (P+M)          |  81.8  |  84.4  |  85.2  |  84.6  |  92.2  |**79.5**|  79.3  |  68.8  |**75.7**|  85.2  |  82.8  |
 
-Table: Test performances of all BERT-Base variants for the biomedical domain as of April 2020 and our models on all tasks. **Bold** indicates the best result of all.  
+Table: Test performances of all BERT-Base variants for the biomedical domain as of April 2020 and our models on all tasks. **Bold** indicates the best result of all (except ouBioBERT-demo).  
 
 **Note**:  
 - Due to the size of BIOSSES, the performance is unstable.
