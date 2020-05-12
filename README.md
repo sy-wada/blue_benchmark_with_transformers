@@ -24,6 +24,19 @@ transformers-cli convert --model_type bert \
   --pytorch_dump_output $BERT_BASE_DIR/pytorch_model.bin
 ```
 ## Our models  
++ **Demonstration models for our research**
+  * ouBioBERT-Base, Uncased  #coming soon...
+    - **The best score on the BLUE benchmark**
+    - trained on Focused PubMed abstracts with the Other PubMed abstracts.
+    - max_seq_length=512
+    - will be community-uploaded on Hugging Face, refer to [https://huggingface.co/models](https://huggingface.co/models).
+  * [ouBioBERT-Base, Uncased (demo)](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v0.1)  #20200415
+    - trained on Focused PubMed abstracts with the Other PubMed abstracts.
+    - max_seq_length=128
+  * BERT (sP+B+W) # 20200512
+    - a validation model for our method.
+    - trained on a small biomedical corpus with BooksCorpus and Wikipedia.
+
 |Abbr. | Corpus                   | Words  | Size  | Domain     |
 |:----:|:-------------------------|-------:|------:|:-----------|
 |enW   | English Wikipedia        | 2,200M |  13GB | General    |
@@ -37,22 +50,9 @@ Table: List of text corpora used for our models.
 - Focused PubMed abstracts (fP): articles more related to human beings.
 - Other PubMed abstracts (oP): articles other than Focused PubMed abstracts.  
 
-+ **Demonstration models for our research**
-  * ouBioBERT-Base, Uncased  #coming soon...
-    - **The best score on the BLUE benchmark**
-    - trained on fP+oP
-    - max_seq_length=512
-    - will be community-uploaded on Hugging Face, refer to [https://huggingface.co/models](https://huggingface.co/models).
-  * [ouBioBERT-Base, Uncased (demo)](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v0.1)  #20200415
-    - trained on fP+oP
-    - max_seq_length=128
-  * BERT (sP+B+W) # 20200512
-    - trained on a small biomedical corpus with BooksCorpus and Wikipedia.
-    - a validation model for our method.
 ## Results
 |            |**Total**|[MedSTS](#medsts)|[BIOSSES](#biosses)|[BC5CDR disease](#bc5cdr-disease)|[BC5CDR chemical](#bc5cdr-chemical)|[ShARe CLEFE](#shareclefe)|[DDI](#ddi)|[ChemProt](#chemprot)|[i2b2](#i2b2-2010)|[HoC](#hoc)|[MedNLI](#mednli)| 
 |:------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| *ouBioBERT-demo*        | *83.9* | *83.8* | *92.8* | *86.9* | *93.7* | *80.3* | *80.8* | *75.5* | *75.0* | *86.9* | *83.1* |
 | BERT (sP+B+W)           |  81.4  |  83.2  |  89.7  |  85.7  |  91.8  |  79.1  |  78.4  |  67.5  |  73.1  |  85.3  |  80.1  |
 | BERT-BASE               |  54.8  |  52.1  |  34.9  |  66.5  |  76.7  |  56.1  |  35.3  |  29.8  |  51.1  |  78.2  |  67.0  |
 | BioBERT (v1.1)          |**82.9**|  85.0  |**90.9**|  85.8  |  93.2  |  76.9  |  80.9  |  73.2  |  74.2  |  85.9  |  83.1  |
@@ -61,13 +61,16 @@ Table: List of text corpora used for our models.
 | BlueBERT (P)            |  82.9  |**85.3**|  88.5  |**86.2**|**93.5**|  77.7  |**81.2**|**73.5**|  74.2  |**86.2**|  82.7  |
 | BlueBERT (P+M)          |  81.8  |  84.4  |  85.2  |  84.6  |  92.2  |**79.5**|  79.3  |  68.8  |**75.7**|  85.2  |  82.8  |
 
-Table: Test performances of all BERT-Base variants for the biomedical domain as of April 2020 and our models on all tasks. **Bold** indicates the best result of all (except ouBioBERT-demo).  
+Table: Test performances of all BERT-Base variants for the biomedical domain as of April 2020 and our models on all tasks. **Bold** indicates the best result of all.  
 
-**Note**:  
-- Due to the size of BIOSSES, the performance is unstable.
-  * In addition to epochs and learning rate , we run with different random seeds (n=20) and choose models in the top 50 (top 10%) on the development set.
-  * Then, we evaluate the mean of test scores on each model.
-  * It is suggested in [Peng et al. (2019)](#ypeng).  
+|            |**Total**|[MedSTS](#medsts)|[BIOSSES](#biosses)|[BC5CDR disease](#bc5cdr-disease)|[BC5CDR chemical](#bc5cdr-chemical)|[ShARe CLEFE](#shareclefe)|[DDI](#ddi)|[ChemProt](#chemprot)|[i2b2](#i2b2-2010)|[HoC](#hoc)|[MedNLI](#mednli)| 
+|:------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| ouBioBERT  |**83.8**<br>(0.3)  |  84.9<br>(0.6)  |**92.3**<br>(0.8)  |**87.4**<br>(0.1)  |**93.7**<br>(0.2)  |**80.1**<br>(0.4)  |**81.1**<br>(1.5)  |**75.0**<br>(0.3)  |  74.0<br>(0.8)  |**86.4**<br>(0.5)  |  83.6<br>(0.7) |
+| BioBERT (v1.1)  |  82.8<br>(0.1)  |**84.9**<br>(0.5)  |  89.3<br>(1.7)  |  85.7<br>(0.4)  |  93.3<br>(0.1)  |  78.0<br>(0.8)  |  80.4<br>(0.4)  |  73.3<br>(0.4)  |  74.5<br>(0.6)  |  85.8<br>(0.6)  |  82.9<br>(0.7) |
+| BlueBERT (P)  |  82.9<br>(0.1)  |  84.8<br>(0.5)  |  90.3<br>(2.0)  |  86.2<br>(0.4)  |  93.3<br>(0.3)  |  78.3<br>(0.4)  |  80.7<br>(0.6)  |  73.5<br>(0.5)  |  73.9<br>(0.8)  |  86.3<br>(0.7)  |  82.1<br>(0.8) |
+| BlueBERT (P+M)  |  81.6<br>(0.5)  |  84.6<br>(0.8)  |  82.0<br>(5.1)  |  84.7<br>(0.3)  |  92.3<br>(0.1)  |  79.9<br>(0.4)  |  78.8<br>(0.8)  |  68.6<br>(0.5)  |**75.8**<br>(0.3)  |  85.0<br>(0.4)  |**83.9**<br>(0.8) |
+
+Table: ouBioBERT performance on the BLUE task test sets. Numbers are mean (standard deviation) with five different random seeds. The best scores are in bold. 
 
 -----  
 ## Table of Contents
@@ -122,8 +125,7 @@ Please visit the website or contact to the 1st author to obtain a copy of the da
 ![BIOSSES_hist](./img/biosses.png)  
 [BIOSSES](https://tabilab.cmpe.boun.edu.tr/BIOSSES/) is a corpus of sentence pairs selected from the Biomedical Summarization Track Training Dataset in the biomedical domain ([Soğancıoğlu et al., 2017](#gsogancioglu)).  
 #### Known problems
-The BIOSSES dataset is very small (only 16 sentence pairs in the development set). It causes unstable performance of fine-tuning, so in addition to epochs and learning rate, we run with different random seeds (n=20) and adopt models in the top 50 (top 10%) on the development set.  
-Then, we evaluate the mean of test scores on each model.  
+The BIOSSES dataset is very small (only 16 sentence pairs in the development set). It causes unstable performance of fine-tuning.  
 ## Named entity recognition
 - The aim of the named entity recognition task is to predict mention spans given in the text.
 - **Metrics**: strict version of F1-score (exact phrase matching).
@@ -341,7 +343,7 @@ The results are [above](#results).
 
 ## Citing
 If you use our work in your research, please kindly cite the following papers:  
-`the original paper of BLUE Benchmark`  
+`the original paper of the BLUE Benchmark`  
 - Peng Y, Yan S, Lu Z. Transfer Learning in Biomedical Natural Language Processing: An Evaluation of BERT and ELMo on Ten Benchmarking Datasets. In Proceedings of the 2019 Workshop on Biomedical Natural Language Processing (BioNLP 2019). 2019:58-65.
 
 `Our research`  
