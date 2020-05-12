@@ -24,6 +24,7 @@ Please keep in mind that different environments may produce different results fr
         - **max_seq_length** = (phase1) 128 tokens/ (phase2) 512 tokens
         - **global_batch_size** = (phase1) 65,536 sequences/ (phase2) 32,768 sequences
         - **steps** = (phase1) 7,038 steps/ (phase2) 1,563 steps
+        - **Note that the phase1 has already done on ouBioBERT-Base, Uncased (demo).**
         - **number of tokens processed in pre-training** :  
           128 tokens x 65,536 sequences x 7,038 steps  
           +512 tokens x 32,768 sequences x 1,563 steps = **85B tokens**
