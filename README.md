@@ -100,6 +100,7 @@ The best scores are in bold.
   + [MedNLI](#mednli)
 * [Total score](#total-score)
 * [Citing](#citing)
+* [Funding](#funding)
 * [Acknowledgments](#acknowledgments)
 * [References](#references)
 
