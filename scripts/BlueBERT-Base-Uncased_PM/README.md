@@ -14,7 +14,6 @@ export CUDA_VISIBLE_DEVICES=0 # means n_gpu=1
   --do_lower_case \
   --fp16
 ```
-Only in [BIOSSES](#biosses), we run it with multiple seeds.  
 
 
 Please change the following variables to suit your environment:  
@@ -22,28 +21,23 @@ Please change the following variables to suit your environment:
 `$DATASET_DIR`: a dataset directory for each task  
 `$MODEL_DIR`: where the pre-trained model is saved  
 ## Overview
-| Task                                | learning rate | epochs | seed | dev_score | test_score |
-|:------------------------------------|--------------:|-------:|-----:|----------:|-----------:|
-| [MedSTS](#medsts)                   | 5e-5          |  9     | 12   |  88.5     | 84.4       |
-| [BIOSSES](#biosses)                 | 5e-5          | 40     | 20   |  92.4     | 80.7       |
-| [BC5CDR-disease](#bc5cdr-disease)   | 3e-5          | 20     | 12   | 100.0     | 84.6       |
-| [BC5CDR-chemical](#bc5cdr-chemical) | 5e-5          | 20     | 12   |  99.9     | 92.2       |
-| [ShARe/CLEFE](#shareclefe)          | 1e-5          | 30     | 12   |  98.9     | 78.0       |
-| [DDI](#ddi)                         | 4e-5          | 10     | 12   |  84.8     | 79.3       |
-| [ChemProt](#chemprot)               | 4e-5          |  9     | 12   |  72.0     | 68.8       |
-| [i2b2 2010](#i2b2-2010)             | 5e-5          |  8     | 12   |  84.2     | 75.7       |
-| [HoC](#hoc)                         | 1e-5          | 15     | 12   |  87.3     | 82.7       |
-| [MedNLI](#mednli)                   | 5e-5          |  4     | 12   |  87.1     | 83.7       |
+| Task                                | learning rate | epochs | dev_score | test_score |
+|:------------------------------------|--------------:|-------:|----------:|-----------:|
+| [MedSTS](#medsts)                   | 5e-5          |  9     |  88.5     | 84.4       |
+| [BIOSSES](#biosses)                 | 5e-5          | 50     |  85.8     | 85.2       |
+| [BC5CDR-disease](#bc5cdr-disease)   | 3e-5          | 20     | 100.0     | 84.6       |
+| [BC5CDR-chemical](#bc5cdr-chemical) | 5e-5          | 20     |  99.9     | 92.2       |
+| [ShARe/CLEFE](#shareclefe)          | 5e-5          | 30     |  98.8     | 79.5       |
+| [DDI](#ddi)                         | 4e-5          | 10     |  84.8     | 79.3       |
+| [ChemProt](#chemprot)               | 4e-5          |  9     |  72.0     | 68.8       |
+| [i2b2 2010](#i2b2-2010)             | 5e-5          |  8     |  84.2     | 75.7       |
+| [HoC](#hoc)                         | 3e-5          |  5     |  87.2     | 85.2       |
+| [MedNLI](#mednli)                   | 4e-5          |  7     |  86.4     | 82.8       |
 
 -----  
 ## Sentence similarity
 ### MedSTS
 | parameter | candidates |
-|:----|:----|
-| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10, 15 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of MedSTS.
 ```bash
 python $CODE_DIR/utils/run_sts.py \
   --do_train \
@@ -69,13 +63,6 @@ python $CODE_DIR/utils/run_sts.py \
   --fp16
 ```
 ### BIOSSES
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 10, 20, 30, 40, 50 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-| **seed** | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,<br> 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 |
-
-Table: Parameter Candidates Used for Grid Search of BIOSSES.
 ```bash
 python $CODE_DIR/utils/run_sts.py \
   --do_train \
@@ -86,7 +73,7 @@ python $CODE_DIR/utils/run_sts.py \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/biosses \
   --learning_rate=5e-5 \
-  --num_train_epochs=40 \
+  --num_train_epochs=50 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -94,19 +81,13 @@ python $CODE_DIR/utils/run_sts.py \
   --per_gpu_train_batch_size=32 \
   --per_gpu_eval_batch_size=32 \
   --gradient_accumulation_steps=1 \
-  --seed=20 \
+  --seed=12 \
   --do_lower_case \
   --eval_every_epoch \
   --overwrite_output_dir \
   --fp16
 ```
 ## Named Entity Recognition
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 10, 20, 30 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of BC5CDR-disease, BC5CDR-chemical and ShARe/CLEFE.
 ### BC5CDR-disease
 ```bash
 python $CODE_DIR/utils/run_ner.py \
@@ -167,7 +148,7 @@ python $CODE_DIR/utils/run_ner.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/clefe \
-  --learning_rate=1e-5 \
+  --learning_rate=5e-5 \
   --num_train_epochs=30 \
   --logging_steps=0 \
   --save_steps=0 \
@@ -183,12 +164,6 @@ python $CODE_DIR/utils/run_ner.py \
   --fp16
 ```
 ## Relation Extraction
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of DDI, ChemProt and i2b2 2010.
 ### DDI
 ```bash
 python $CODE_DIR/utils/run_multi_class_classifier.py \
@@ -266,12 +241,6 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
 ```
 ## Document multilabel classification
 ### HoC
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 5, 10, 15, 20 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of HoC
 ```bash
 python $CODE_DIR/utils/run_multi_label_classifier.py \
   --do_train \
@@ -282,8 +251,8 @@ python $CODE_DIR/utils/run_multi_label_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/hoc \
-  --learning_rate=1e-5 \
-  --num_train_epochs=15 \
+  --learning_rate=3e-5 \
+  --num_train_epochs=5 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -299,12 +268,6 @@ python $CODE_DIR/utils/run_multi_label_classifier.py \
 ```
 ## Inference task
 ### MedNLI
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10, 15 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of MedNLI
 ```bash
 python $CODE_DIR/utils/run_multi_class_classifier.py \
   --do_train \
@@ -314,8 +277,8 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=$MODEL_DIR \
   --output_dir=./output/mednli \
-  --learning_rate=5e-5 \
-  --num_train_epochs=4 \
+  --learning_rate=4e-5 \
+  --num_train_epochs=7 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
