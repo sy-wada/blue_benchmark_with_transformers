@@ -1,16 +1,17 @@
 # BLUE Benchmark with Transformers
 
+**\*\*\*\*\* New May 14th, 2020: ouBioBERT (full) is released \*\*\*\*\***  
 **\*\*\*\*\* New April 15th, 2020: released \*\*\*\*\***
 
 -----  
 Thank you for your interest in our research!  
-[Biomedical Language Understanding Evaluation (BLUE) benchmark](https://github.com/ncbi-nlp/BLUE_Benchmark) is a collection of resources for evaluating and analyzing biomedical
+[The biomedical language understanding evaluation (BLUE) benchmark](https://github.com/ncbi-nlp/BLUE_Benchmark) is a collection of resources for evaluating and analyzing biomedical
 natural language representation models ([Peng et al., 2019](#ypeng)).  
-This repository provides our implementation of fine-tuning for BLUE benchmark with [🤗Transformers](https://github.com/huggingface/transformers).  
-[Our demonstration model](#our-models) is available now.
+This repository provides our implementation of fine-tuning for the BLUE benchmark with [🤗Transformers](https://github.com/huggingface/transformers).  
+[Our demonstration models](#our-models) are available now.
 ## Preparations
 1. Download the benchmark dataset from https://github.com/ncbi-nlp/BLUE_Benchmark
-1. Save  pre-trained models to your directory. For example, [BioBERT](https://github.com/dmis-lab/biobert), [clinicalBERT](https://github.com/EmilyAlsentzer/clinicalBERT), [SciBERT](https://github.com/allenai/scibert), [BlueBERT](https://github.com/ncbi-nlp/bluebert) and so on.
+1. Save pre-trained models to your directory. For example, [BioBERT](https://github.com/dmis-lab/biobert), [clinicalBERT](https://github.com/EmilyAlsentzer/clinicalBERT), [SciBERT](https://github.com/allenai/scibert), [BlueBERT](https://github.com/ncbi-nlp/bluebert) and so on.
 1. Try to use our code in [utils](./utils). Examples of the command can be found in [scripts](./scripts).
 ### Tips
 If you download Tensorflow models, converting them into PyTorch ones comforts your fine-tuning.  
@@ -25,15 +26,15 @@ transformers-cli convert --model_type bert \
 ```
 ## Our models  
 + **Demonstration models for our research**
-  * ouBioBERT-Base, Uncased  #coming soon...
+  * [ouBioBERT-Base, Uncased](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v1.0)  # 20200514 *(recommended)*
     - **The best score on the BLUE benchmark**
     - trained on Focused PubMed abstracts with the Other PubMed abstracts.
     - max_seq_length=512
-    - will be community-uploaded on Hugging Face, refer to [https://huggingface.co/models](https://huggingface.co/models).
-  * [ouBioBERT-Base, Uncased (demo)](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v0.1)  #20200415
+    - also community-uploaded on Hugging Face, refer to [https://huggingface.co/models](https://huggingface.co/models).
+  * [ouBioBERT-Base, Uncased (demo)](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v0.1)  # 20200415
     - trained on Focused PubMed abstracts with the Other PubMed abstracts.
     - max_seq_length=128
-  * BERT (sP+B+W) # 20200512
+  * [BERT (sP + B + W)](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v0.1)  # 20200512
     - a validation model for our method.
     - trained on a small biomedical corpus with BooksCorpus and Wikipedia.
 
@@ -45,7 +46,7 @@ transformers-cli convert --model_type bert \
 |fP    | Focused PubMed abstracts |   280M | 1.8GB | BioMedical |
 |oP    | Other PubMed abstracts   | 2,800M |  18GB | BioMedical |
 
-Table: List of text corpora used for our models.  
+Table: List of the text corpora used for our models.  
 - Small PubMed abstracts (sP): extracted from [PubMed baseline](ftp://ftp.ncbi.nlm.nih.gov/pubmed/baseline) more associated with clinical research and translational research of human disease by using each MeSH IDs.
 - Focused PubMed abstracts (fP): articles more related to human beings.
 - Other PubMed abstracts (oP): articles other than Focused PubMed abstracts.  
@@ -61,7 +62,8 @@ Table: List of text corpora used for our models.
 | BlueBERT (P)            |  82.9  |**85.3**|  88.5  |**86.2**|**93.5**|  77.7  |**81.2**|**73.5**|  74.2  |**86.2**|  82.7  |
 | BlueBERT (P+M)          |  81.8  |  84.4  |  85.2  |  84.6  |  92.2  |**79.5**|  79.3  |  68.8  |**75.7**|  85.2  |  82.8  |
 
-Table: Test performances of all BERT-Base variants for the biomedical domain as of April 2020 and our models on all tasks. **Bold** indicates the best result of all.  
+Table: BLUE scores of BERT (sP + B + W) compared with those of all the BERT-Base variants for the biomedical domain as of April 2020.  
+**Bold** indicates the best result of all.  
 
 |            |**Total**|[MedSTS](#medsts)|[BIOSSES](#biosses)|[BC5CDR disease](#bc5cdr-disease)|[BC5CDR chemical](#bc5cdr-chemical)|[ShARe CLEFE](#shareclefe)|[DDI](#ddi)|[ChemProt](#chemprot)|[i2b2](#i2b2-2010)|[HoC](#hoc)|[MedNLI](#mednli)| 
 |:------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
@@ -70,7 +72,9 @@ Table: Test performances of all BERT-Base variants for the biomedical domain as 
 | BlueBERT (P)  |  82.9<br>(0.1)  |  84.8<br>(0.5)  |  90.3<br>(2.0)  |  86.2<br>(0.4)  |  93.3<br>(0.3)  |  78.3<br>(0.4)  |  80.7<br>(0.6)  |  73.5<br>(0.5)  |  73.9<br>(0.8)  |  86.3<br>(0.7)  |  82.1<br>(0.8) |
 | BlueBERT (P+M)  |  81.6<br>(0.5)  |  84.6<br>(0.8)  |  82.0<br>(5.1)  |  84.7<br>(0.3)  |  92.3<br>(0.1)  |  79.9<br>(0.4)  |  78.8<br>(0.8)  |  68.6<br>(0.5)  |**75.8**<br>(0.3)  |  85.0<br>(0.4)  |**83.9**<br>(0.8) |
 
-Table: ouBioBERT performance on the BLUE task test sets. Numbers are mean (standard deviation) with five different random seeds. The best scores are in bold. 
+Table: Performance of ouBioBERT on the BLUE task.  
+The numbers are mean (standard deviation) on five different random seeds.  
+The best scores are in bold. 
 
 -----  
 ## Table of Contents
@@ -81,7 +85,7 @@ Table: ouBioBERT performance on the BLUE task test sets. Numbers are mean (stand
 * [Sentence similarity](#sentence-similarity)
   + [MedSTS](#medsts)
   + [BIOSSES](#biosses)
-* [Named entity recognition](#named-entity-recognition)
+* [Named-entity recognition](#named-entity-recognition)
   + [BC5CDR-disease](#bc5cdr-disease)
   + [BC5CDR-chemical](#bc5cdr-chemical)
   + [ShARe/CLEFE](#shareclefe)
@@ -103,9 +107,9 @@ Table: ouBioBERT performance on the BLUE task test sets. Numbers are mean (stand
 |-----------------|------:|-----:|-----:|-------------------------|---------------------|------------|
 | MedSTS          |   675 |   75 |  318 | Sentence similarity     | Pearson             | Clinical   |
 | BIOSSES         |    64 |   16 |   20 | Sentence similarity     | Pearson             | Biomedical |
-| BC5CDR-disease  |  4182 | 4244 | 4424 | Named entity recognition| F1                  | Biomedical |
-| BC5CDR-chemical |  5203 | 5347 | 5385 | Named entity recognition| F1                  | Biomedical |
-| ShARe/CLEFE     |  4628 | 1065 | 5195 | Named entity recognition| F1                  | Clinical   |
+| BC5CDR-disease  |  4182 | 4244 | 4424 | Named-entity recognition| F1                  | Biomedical |
+| BC5CDR-chemical |  5203 | 5347 | 5385 | Named-entity recognition| F1                  | Biomedical |
+| ShARe/CLEFE     |  4628 | 1065 | 5195 | Named-entity recognition| F1                  | Clinical   |
 | DDI             |  2937 | 1004 |  979 | Relation extraction     | micro F1            | Biomedical |
 | ChemProt        |  4154 | 2416 | 3458 | Relation extraction     | micro F1            | Biomedical |
 | i2b2-2010       |  3110 |   10 | 6293 | Relation extraction     | micro F1            | Clinical   |
@@ -114,20 +118,20 @@ Table: ouBioBERT performance on the BLUE task test sets. Numbers are mean (stand
 
 
 ## Sentence similarity
-- The sentence similarity task is to predict similarity scores based on sentence pairs.
+- The sentence-similarity task is to predict similarity scores on the basis of sentence pairs.
 - **Metrics**: Pearson correlation coefficients
   + We use [scipy.stats.pearsonr()](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html).
 ### MedSTS
 ![MedSTS_hist](./img/medsts.png)  
-[MedSTS](https://mayoclinic.pure.elsevier.com/en/publications/medsts-a-resource-for-clinical-semantic-textual-similarity) is a corpus of sentence pairs selected from Mayo Clinics clinical data warehouse and was used in the BioCreative/OHNLP Challenge 2018 Task 2 ([Wang et al., 2018](#ywang), also called [ClinicalSTS](https://sites.google.com/view/ohnlp2018/home)).  
+[MedSTS](https://mayoclinic.pure.elsevier.com/en/publications/medsts-a-resource-for-clinical-semantic-textual-similarity) is a corpus of sentence pairs selected from the clinical data warehouse of Mayo Clinic and was used in the BioCreative/OHNLP Challenge 2018 Task 2 as [ClinicalSTS](https://sites.google.com/view/ohnlp2018/home) ([Wang et al., 2018](#ywang)).  
 Please visit the website or contact to the 1st author to obtain a copy of the dataset.
 ### BIOSSES
 ![BIOSSES_hist](./img/biosses.png)  
 [BIOSSES](https://tabilab.cmpe.boun.edu.tr/BIOSSES/) is a corpus of sentence pairs selected from the Biomedical Summarization Track Training Dataset in the biomedical domain ([Soğancıoğlu et al., 2017](#gsogancioglu)).  
 #### Known problems
-The BIOSSES dataset is very small, so it causes unstable performance of fine-tuning.  
-## Named entity recognition
-- The aim of the named entity recognition task is to predict mention spans given in the text.
+The BIOSSES dataset is very small, therefore it causes unstable performance of fine-tuning.  
+## Named-entity recognition
+- The aim of the Named-entity recognition task is to predict mention spans given in a text.
 - **Metrics**: strict version of F1-score (exact phrase matching).
   + We use a primitive approach descirbed below to deal with disjoint mentions.
 ### Known problems
@@ -217,7 +221,7 @@ one	-	649	I
 |I next to O     |   517 |  110 |   411 |
 |**Total**       |  5151 | 1176 |  5623 |
 
-[ShARe/CLEFE](https://physionet.org/content/shareclefehealth2013/1.0/) eHealth Task 1 Corpus is a collection of 299 deidentified clinical free-text notes from the MIMIC II database ([Suominen et al.,2013](#hsuominen)).  
+[ShARe/CLEFE](https://physionet.org/content/shareclefehealth2013/1.0/) eHealth Task 1 Corpus is a collection of 299 clinical free-text notes from the MIMIC II database ([Suominen et al.,2013](#hsuominen)).  
 Please visit the website and sign up to obtain a copy of the dataset.  
 An example of *I next to O*: `Test.tsv#L112-L118`<a id="inexttoo"></a>  
 You'd better check out these original files, too: 
@@ -234,8 +238,8 @@ dilated	-	456	I
 ```
 
 ## Relation extraction
-- The aim of the relation extraction task is to predict relations and their types between the two entities mentioned in the sentences. The relations with types were compared to annotated data.
-- Following the implimentation of [BLUE benchmark](https://github.com/ncbi-nlp/BLUE_Benchmark), we treated the relation extraction task as a sentence classification by replacing two named entity mentions of interest in the sentence with predefined tags ([Lee et al., 2019](#jlee)).
+- The aim of the relation-extraction task is to predict relations and their types between the two entities mentioned in the sentences. The relations with types were compared to annotated data.
+- Following the implimentation of [the BLUE benchmark](https://github.com/ncbi-nlp/BLUE_Benchmark), we treated the relation extraction task as a sentence classification by replacing two named entity mentions of interest in the sentence with predefined tags ([Lee et al., 2019](#jlee)).
   + **ORIGINAL**: *Citalopram* protected against the RTI-76-induced inhibition of *SERT* binding.
   + **REPLACED**: *@CHEMICAL$* protected against the RTI-76-induced inhibition of *@GENE$* binding.
   + **RELATION**: *citalopram* and *SERT* has **a chemical-gene relation**.
@@ -269,7 +273,7 @@ dilated	-	456	I
 |false  | 15306 | 9404 | 13485 | |
 |**Total**|  4154<br>+15306| 2416<br>+9404 |  3458<br>+13485 |
 
-[ChemProt](https://biocreative.bioinformatics.udel.edu/news/corpora/) consists of 1,820 PubMed abstracts with chemical-protein interactions and was used in the BioCreative VI text mining chemical-protein interactions shared task ([Krallinger et al, 2017](#mkrallinger)).
+[ChemProt](https://biocreative.bioinformatics.udel.edu/news/corpora/) comprises 1,820 PubMed abstracts with chemical–protein interactions and was used in the BioCreative VI text mining chemical–protein interac-tions shared task ([Krallinger et al, 2017](#mkrallinger)).
 
 ### i2b2 2010
 | class | Train |  Dev |  Test | note |
@@ -285,12 +289,12 @@ dilated	-	456	I
 |false  | 19050 |   86 | 36707 | They are in the same sentence, but do not fit into one of the above defined relationships. |
 |**Total**|  3110<br>+19050| 10<br>+86 |  6293<br>+36707 | |
 
-[i2b2 2010](https://www.i2b2.org/NLP/DataSets/) shared task collection consists of 170 documents for training and 256 documents for testing, which is the subset of the original dataset ([Uzuner et al., 2011](#ouzuner)).
+[i2b2 2010](https://www.i2b2.org/NLP/DataSets/) shared task collection comprises 170 documents for training and 256 for testing ([Uzuner et al., 2011](#ouzuner)).
 
 #### Known problems
-The development dataset is very small, so it is difficult to determine the best model.  
+The development dataset is very small, then it is difficult to determine the best model.  
 ## Document multilabel classification
-- The multilabel classification task predicts multiple labels from the texts.
+- The multilabel-classification task predicts multiple labels from the texts.
 
 ### HoC
 | label | Train |  Dev |  Test |
@@ -314,7 +318,7 @@ The development dataset is very small, so it is difficult to determine the best 
 - **Dev**:   sentences:  1496/ articles:  157
 - **Test**:  sentences:  2896/ articles:  315
 
-[HoC](https://github.com/sb895/Hallmarks-of-Cancer) (the Hallmarks of Cancers corpus) consists of 1,580 PubMed publication abstracts manually annotated with ten currently known hallmarks of cancer([Baker et al., 2016](#sbaker)).
+[HoC](https://github.com/sb895/Hallmarks-of-Cancer) (the Hallmarks of Cancers corpus) comprises 1,580 PubMed publication abstracts manually annotated using ten currently known hallmarks of cancer ([Baker et al., 2016](#sbaker)).
 - **Evaluation**:
   1. predict multi-labels for each sentence in the document.
   1. combine the labels in one document and compare them with the gold-standard.
@@ -322,7 +326,7 @@ The development dataset is very small, so it is difficult to determine the best 
   + We use [eval_hoc.py](https://github.com/ncbi-nlp/BLUE_Benchmark/blob/master/blue/eval_hoc.py) from [the BLUE benchmark repository](https://github.com/ncbi-nlp/BLUE_Benchmark) to calculate the metrics.
 
 ## Inference task
-- The aim of the inference task is to predict whether the premise sentence entails or contradicts the hypothesis sentence.
+- The inference task aims to predict whether the relationship between the premise and hypothesis sentences is contradiction, entailment, or neutral.
 - **Metrics**: overall accuracy
   + We use [sklearn.metrics.confusion_matrix()](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html) and [sklearn.metrics.accuracy_score()](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) to compute TP, FP, FN and TN on each class and overall accuracy.
 
@@ -338,7 +342,7 @@ The development dataset is very small, so it is difficult to determine the best 
 Please visit the website and sign up to obtain a copy of the dataset.  
 
 ## Total score
-Following the practice in  [Peng et al. (2019)](#ypeng), we use a macro-average of Pearson scores, F1-scores and an overall accuracy score to determine a pre-trained model's position.  
+Following the practice in  [Peng et al. (2019)](#ypeng), we use a macro-average of Pearson scores and F1-scores to determine a pre-trained model's position.  
 The results are [above](#results).
 
 ## Citing
@@ -348,9 +352,12 @@ If you use our work in your research, please kindly cite the following papers:
 
 `Our research`  
 - currently being prepared.
+
+## Funding
+This work was supported by Council for Science, Technology and Innovation (CSTI), cross-ministerial Strategic Innovation Promotion Program (SIP), "Innovative AI Hospital System" (Funding Agency: National Institute of Biomedical Innovation, Health and Nutrition (NIBIOHN)).
+
 ## Acknowledgments
-We are grateful to the authors of BERT to make the data and codes publicly available. We thank the NVIDIA team because their implimentation of [BERT for PyTorch](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT) enables us to pre-train BERT models on our local machine. We would also like to take this opportunity to thank Yifan Peng and shared task organizers for publishing BLUE benchmark.  
-This work was supported by Council for Science, Technology and Innovation (CSTI), cross-ministerial Strategic Innovation Promotion Program (SIP), "Innovative AI Hospital System" (Funding Agency: National Instisute of Biomedical Innovation, Health and Nutrition (NIBIOHN)).
+We are grateful to the authors of BERT to make the data and codes publicly available. We thank the NVIDIA team because their implementation of [BERT for PyTorch](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT) enabled us to pre-train BERT models on our local machine. We would also like to thank Yifan Peng and shared-task organizers for publishing the BLUE benchmark.  
 
 ## References
 - <a id="ypeng"></a>Peng Y, Yan S, Lu Z. [Transfer Learning in Biomedical Natural Language Processing: An
