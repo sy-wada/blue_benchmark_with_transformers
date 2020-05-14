@@ -21,28 +21,22 @@ Please change the following variables to suit your environment:
 `$CODE_DIR`: where you downloaded this repository  
 `$DATASET_DIR`: a dataset directory for each task  
 ## Overview
-| Task                                | learning rate | epochs | seed | dev_score | test_score |
-|:------------------------------------|--------------:|-------:|-----:|----------:|-----------:|
-| [MedSTS](#medsts)                   | 5e-5          |  9     | 12   |  87.2     | 85.3       |
-| [BIOSSES](#biosses)                 | 5e-5          | 40     | 11   |  91.8     | 92.0       |
-| [BC5CDR-disease](#bc5cdr-disease)   | 2e-5          | 20     | 12   | 100.0     | 86.3       |
-| [BC5CDR-chemical](#bc5cdr-chemical) | 5e-5          | 30     | 12   |  99.9     | 93.7       |
-| [ShARe/CLEFE](#shareclefe)          | 2e-5          | 30     | 12   |  99.2     | 81.7       |
-| [DDI](#ddi)                         | 3e-5          | 10     | 12   |  85.6     | 80.8       |
-| [ChemProt](#chemprot)               | 3e-5          |  7     | 12   |  78.3     | 75.5       |
-| [i2b2 2010](#i2b2-2010)             | 3e-5          |  3     | 12   |  70.6     | 72.9       |
-| [HoC](#hoc)                         | 4e-5          | 10     | 12   |  87.9     | 86.9       |
-| [MedNLI](#mednli)                   | 5e-5          | 10     | 12   |  86.5     | 83.1       |
+| Task                                | learning rate | epochs | dev_score | test_score |
+|:------------------------------------|--------------:|-------:|----------:|-----------:|
+| [MedSTS](#medsts)                   | 3e-5          | 10     |  85.7     | 84.4       |
+| [BIOSSES](#biosses)                 | 3e-5          | 50     |  89.3     | 93.1       |
+| [BC5CDR-disease](#bc5cdr-disease)   | 5e-5          | 30     | 100.0     | 87.3       |
+| [BC5CDR-chemical](#bc5cdr-chemical) | 4e-5          | 30     |  99.9     | 93.5       |
+| [ShARe/CLEFE](#shareclefe)          | 3e-5          | 30     |  98.8     | 80.5       |
+| [DDI](#ddi)                         | 5e-5          | 10     |  84.9     | 81.7       |
+| [ChemProt](#chemprot)               | 4e-5          |  7     |  77.8     | 75.3       |
+| [i2b2 2010](#i2b2-2010)             | 3e-5          |  8     |  70.6     | 74.0       |
+| [HoC](#hoc)                         | 3e-5          | 15     |  87.3     | 86.3       |
+| [MedNLI](#mednli)                   | 3e-5          |  9     |  86.2     | 83.9       |
 
 -----  
 ## Sentence similarity
 ### MedSTS
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10, 15 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of MedSTS.
 ```bash
 python $CODE_DIR/utils/run_sts.py \
   --do_train \
@@ -52,8 +46,8 @@ python $CODE_DIR/utils/run_sts.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/medsts \
-  --learning_rate=5e-5 \
-  --num_train_epochs=9 \
+  --learning_rate=3e-5 \
+  --num_train_epochs=10 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -68,13 +62,6 @@ python $CODE_DIR/utils/run_sts.py \
   --fp16
 ```
 ### BIOSSES
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 10, 20, 30, 40, 50 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-| **seed** | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,<br> 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 |
-
-Table: Parameter Candidates Used for Grid Search of BIOSSES.
 ```bash
 python $CODE_DIR/utils/run_sts.py \
   --do_train \
@@ -84,8 +71,8 @@ python $CODE_DIR/utils/run_sts.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/biosses \
-  --learning_rate=5e-5 \
-  --num_train_epochs=40 \
+  --learning_rate=3e-5 \
+  --num_train_epochs=50 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -100,12 +87,6 @@ python $CODE_DIR/utils/run_sts.py \
   --fp16
 ```
 ## Named Entity Recognition
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 10, 20, 30 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of BC5CDR-disease, BC5CDR-chemical and ShARe/CLEFE.
 ### BC5CDR-disease
 ```bash
 python $CODE_DIR/utils/run_ner.py \
@@ -116,8 +97,8 @@ python $CODE_DIR/utils/run_ner.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/bc5cdr_disease \
-  --learning_rate=2e-5 \
-  --num_train_epochs=20 \
+  --learning_rate=5e-5 \
+  --num_train_epochs=30 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -166,7 +147,7 @@ python $CODE_DIR/utils/run_ner.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/clefe \
-  --learning_rate=2e-5 \
+  --learning_rate=3e-5 \
   --num_train_epochs=30 \
   --logging_steps=0 \
   --save_steps=0 \
@@ -182,12 +163,6 @@ python $CODE_DIR/utils/run_ner.py \
   --fp16
 ```
 ## Relation Extraction
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of DDI, ChemProt and i2b2 2010.
 ### DDI
 ```bash
 python $CODE_DIR/utils/run_multi_class_classifier.py \
@@ -198,7 +173,7 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/ddi2013 \
-  --learning_rate=3e-5 \
+  --learning_rate=5e-5 \
   --num_train_epochs=10 \
   --logging_steps=0 \
   --save_steps=0 \
@@ -223,7 +198,7 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/chemprot \
-  --learning_rate=3e-5 \
+  --learning_rate=4e-5 \
   --num_train_epochs=7 \
   --logging_steps=0 \
   --save_steps=0 \
@@ -249,7 +224,7 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/i2b2_2010 \
   --learning_rate=3e-5 \
-  --num_train_epochs=3 \
+  --num_train_epochs=8 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -265,12 +240,6 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
 ```
 ## Document multilabel classification
 ### HoC
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 5, 10, 15, 20 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of HoC
 ```bash
 python $CODE_DIR/utils/run_multi_label_classifier.py \
   --do_train \
@@ -281,8 +250,8 @@ python $CODE_DIR/utils/run_multi_label_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/hoc \
-  --learning_rate=4e-5 \
-  --num_train_epochs=10 \
+  --learning_rate=3e-5 \
+  --num_train_epochs=15 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
@@ -298,12 +267,6 @@ python $CODE_DIR/utils/run_multi_label_classifier.py \
 ```
 ## Inference task
 ### MedNLI
-| parameter | candidates |
-|:----|:----|
-| **epochs** | 3, 4, 5, 6, 7, 8, 9, 10, 15 |
-| **learning rate** | 1e-5, 2e-5, 3e-5, 4e-5, 5e-5 |
-
-Table: Parameter Candidates Used for Grid Search of MedNLI
 ```bash
 python $CODE_DIR/utils/run_multi_class_classifier.py \
   --do_train \
@@ -313,8 +276,8 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --data_dir=$DATASET_DIR \
   --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/mednli \
-  --learning_rate=5e-5 \
-  --num_train_epochs=10 \
+  --learning_rate=3e-5 \
+  --num_train_epochs=9 \
   --logging_steps=0 \
   --save_steps=0 \
   --model_type=bert \
