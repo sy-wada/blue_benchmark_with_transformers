@@ -4,7 +4,7 @@ The optimal hyperparameters we have searched are described here.
 Please keep in mind that different environments may produce different results from ours.
 
 - Our models
-  - [ouBioBERT-Base, Uncased (demo)](./BioMed-Base-Uncased_P_demo)
+  - ouBioBERT-Base, Uncased (demo)
     - **Vocabulary**: custom 32k vocabulary
     - **Pre-training**:
       - trained from scratch.
@@ -15,7 +15,7 @@ Please keep in mind that different environments may produce different results fr
         - **steps** = (phase1) 7,038 steps
         - **number of tokens processed in pre-training** :  
           128 tokens x 65,536 sequences x 7,038 steps = **59B tokens**
-  - ouBioBERT-Base, Uncased (full)
+  - [ouBioBERT-Base, Uncased (full)](./ouBioBERT-Base-Uncased)
     - **Vocabulary**: custom 32k vocabulary
     - **Pre-training**:
       - initialized from [ouBioBERT-Base, Uncased (demo)](./BioMed-Base-Uncased_P_demo) and run with additional steps on max_seq_length=512.
