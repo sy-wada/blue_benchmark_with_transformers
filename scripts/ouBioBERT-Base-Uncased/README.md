@@ -15,13 +15,11 @@ export CUDA_VISIBLE_DEVICES=0 # means n_gpu=1
   --do_lower_case \
   --fp16
 ```
-Only in [BIOSSES](#biosses), we run it with multiple seeds.  
 
 
 Please change the following variables to suit your environment:  
 `$CODE_DIR`: where you downloaded this repository  
 `$DATASET_DIR`: a dataset directory for each task  
-`$MODEL_DIR`: where the pre-trained model is saved  
 ## Overview
 | Task                                | learning rate | epochs | seed | dev_score | test_score |
 |:------------------------------------|--------------:|-------:|-----:|----------:|-----------:|
@@ -52,7 +50,7 @@ python $CODE_DIR/utils/run_sts.py \
   --do_predict \
   --task_name=medsts \
   --data_dir=$DATASET_DIR \
-  --model_name_or_path=$MODEL_DIR \
+  --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/medsts \
   --learning_rate=5e-5 \
   --num_train_epochs=9 \
@@ -84,7 +82,7 @@ python $CODE_DIR/utils/run_sts.py \
   --do_predict \
   --task_name=biosses \
   --data_dir=$DATASET_DIR \
-  --model_name_or_path=$MODEL_DIR \
+  --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/biosses \
   --learning_rate=5e-5 \
   --num_train_epochs=40 \
@@ -116,7 +114,7 @@ python $CODE_DIR/utils/run_ner.py \
   --do_predict \
   --task_name=bc5cdr \
   --data_dir=$DATASET_DIR \
-  --model_name_or_path=$MODEL_DIR \
+  --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/bc5cdr_disease \
   --learning_rate=2e-5 \
   --num_train_epochs=20 \
@@ -141,7 +139,7 @@ python $CODE_DIR/utils/run_ner.py \
   --do_predict \
   --task_name=bc5cdr \
   --data_dir=$DATASET_DIR \
-  --model_name_or_path=$MODEL_DIR \
+  --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/bc5cdr_chem \
   --learning_rate=4e-5 \
   --num_train_epochs=30 \
@@ -166,7 +164,7 @@ python $CODE_DIR/utils/run_ner.py \
   --do_predict \
   --task_name=clefe \
   --data_dir=$DATASET_DIR \
-  --model_name_or_path=$MODEL_DIR \
+  --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/clefe \
   --learning_rate=2e-5 \
   --num_train_epochs=30 \
@@ -198,7 +196,7 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --do_predict \
   --task_name=ddi2013 \
   --data_dir=$DATASET_DIR \
-  --model_name_or_path=$MODEL_DIR \
+  --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/ddi2013 \
   --learning_rate=3e-5 \
   --num_train_epochs=10 \
@@ -223,7 +221,7 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --do_predict \
   --task_name=chemprot \
   --data_dir=$DATASET_DIR \
-  --model_name_or_path=$MODEL_DIR \
+  --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/chemprot \
   --learning_rate=3e-5 \
   --num_train_epochs=7 \
@@ -248,7 +246,7 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --do_predict \
   --task_name=i2b2_2010 \
   --data_dir=$DATASET_DIR \
-  --model_name_or_path=$MODEL_DIR \
+  --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/i2b2_2010 \
   --learning_rate=3e-5 \
   --num_train_epochs=3 \
@@ -281,7 +279,7 @@ python $CODE_DIR/utils/run_multi_label_classifier.py \
   --output_all_logits \
   --task_name=hoc \
   --data_dir=$DATASET_DIR \
-  --model_name_or_path=$MODEL_DIR \
+  --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/hoc \
   --learning_rate=4e-5 \
   --num_train_epochs=10 \
@@ -313,7 +311,7 @@ python $CODE_DIR/utils/run_multi_class_classifier.py \
   --do_predict \
   --task_name=mednli \
   --data_dir=$DATASET_DIR \
-  --model_name_or_path=$MODEL_DIR \
+  --model_name_or_path=seiya/oubiobert-base-uncased \
   --output_dir=./output/mednli \
   --learning_rate=5e-5 \
   --num_train_epochs=10 \
