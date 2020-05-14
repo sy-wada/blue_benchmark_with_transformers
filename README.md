@@ -27,10 +27,11 @@ transformers-cli convert --model_type bert \
 ## Our models  
 + **Demonstration models for our research**
   * [ouBioBERT-Base, Uncased](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v1.0)  # 20200514 *(recommended)*
-    - **The best score on the BLUE benchmark**
+    - **the best score on the BLUE benchmark**
     - trained on Focused PubMed abstracts with the Other PubMed abstracts.
     - max_seq_length=512
     - also community-uploaded on Hugging Face, refer to [https://huggingface.co/models](https://huggingface.co/models).
+    - the sample command of the fine-tuning is [here](https://github.com/sy-wada/blue_benchmark_with_transformers/tree/master/scripts/ouBioBERT-Base-Uncased).
   * [ouBioBERT-Base, Uncased (demo)](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v0.1)  # 20200415
     - trained on Focused PubMed abstracts with the Other PubMed abstracts.
     - max_seq_length=128
