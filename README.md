@@ -353,7 +353,14 @@ If you use our work in your research, please kindly cite the following papers:
 - Peng Y, Yan S, Lu Z. Transfer Learning in Biomedical Natural Language Processing: An Evaluation of BERT and ELMo on Ten Benchmarking Datasets. In Proceedings of the 2019 Workshop on Biomedical Natural Language Processing (BioNLP 2019). 2019:58-65.
 
 `Our research`  
-- currently being prepared.
+```bibtex
+@misc{2005.07202,
+Author = {Shoya Wada and Toshihiro Takeda and Shiro Manabe and Shozo Konishi and Jun Kamohara and Yasushi Matsumura},
+Title = {A pre-training technique to localize medical BERT and enhance BioBERT},
+Year = {2020},
+Eprint = {arXiv:2005.07202},
+}
+```
 
 ## Funding
 This work was supported by Council for Science, Technology and Innovation (CSTI), cross-ministerial Strategic Innovation Promotion Program (SIP), "Innovative AI Hospital System" (Funding Agency: National Institute of Biomedical Innovation, Health and Nutrition (NIBIOHN)).
