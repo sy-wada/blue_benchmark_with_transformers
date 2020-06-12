@@ -7,7 +7,7 @@
 Thank you for your interest in our research!  
 [The biomedical language understanding evaluation (BLUE) benchmark](https://github.com/ncbi-nlp/BLUE_Benchmark) is a collection of resources for evaluating and analyzing biomedical
 natural language representation models ([Peng et al., 2019](#ypeng)).  
-This repository provides our implementation of fine-tuning for the BLUE benchmark with [🤗Transformers](https://github.com/huggingface/transformers).  
+This repository provides our implementation of fine-tuning for the BLUE benchmark with [🤗/Transformers](https://github.com/huggingface/transformers).  
 [Our demonstration models](#our-models) are available now.
 ## Preparations
 1. Download the benchmark dataset from https://github.com/ncbi-nlp/BLUE_Benchmark
