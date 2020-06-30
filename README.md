@@ -35,7 +35,7 @@ transformers-cli convert --model_type bert \
   * [ouBioBERT-Base, Uncased (demo)](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v0.1)  # 20200415
     - trained on Focused PubMed abstracts with the Other PubMed abstracts.
     - max_seq_length=128
-  * [BERT (sP + B + W)](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v0.1)  # 20200512
+  * [BERT (sP + B + enW)](https://github.com/sy-wada/blue_benchmark_with_transformers/releases/tag/v0.1)  # 20200512
     - a validation model for our method.
     - trained on a small biomedical corpus with BooksCorpus and Wikipedia.
 
@@ -55,7 +55,7 @@ Table: List of the text corpora used for our models.
 ## Results
 |            |**Total**|[MedSTS](#medsts)|[BIOSSES](#biosses)|[BC5CDR disease](#bc5cdr-disease)|[BC5CDR chemical](#bc5cdr-chemical)|[ShARe CLEFE](#shareclefe)|[DDI](#ddi)|[ChemProt](#chemprot)|[i2b2](#i2b2-2010)|[HoC](#hoc)|[MedNLI](#mednli)| 
 |:------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| BERT (sP+B+W)           |  81.4  |  83.2  |  89.7  |  85.7  |  91.8  |  79.1  |  78.4  |  67.5  |  73.1  |  85.3  |  80.1  |
+| BERT (sP+B+enW)           |  81.4  |  83.2  |  89.7  |  85.7  |  91.8  |  79.1  |  78.4  |  67.5  |  73.1  |  85.3  |  80.1  |
 | BERT-BASE               |  54.8  |  52.1  |  34.9  |  66.5  |  76.7  |  56.1  |  35.3  |  29.8  |  51.1  |  78.2  |  67.0  |
 | BioBERT (v1.1)          |**82.9**|  85.0  |**90.9**|  85.8  |  93.2  |  76.9  |  80.9  |  73.2  |  74.2  |  85.9  |  83.1  |
 | clinicalBERT            |  81.2  |  82.7  |  88.0  |  84.6  |  92.5  |  78.0  |  76.9  |  67.6  |  74.3  |  86.1  |  81.4  |
