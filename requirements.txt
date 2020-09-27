@@ -8,4 +8,4 @@ apex==0.1
 
 # if you use tensorflow models.
 tensorflow==1.15.4
-# tensorflow-gpu==1.15.2
+# tensorflow-gpu==1.15.4
