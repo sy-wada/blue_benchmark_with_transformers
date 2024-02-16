@@ -14,4 +14,8 @@ When utilizing this dataset, please acknowledge NLM as the source in the followi
 "The research conducted with this project utilizes PubMed data provided by the National Library of Medicine (NLM)."
 
 ### License
+#### Our Code
+[Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
+
+#### PubMed Data
 For detailed information on the terms of use for PubMed data, please refer [here](https://www.nlm.nih.gov/databases/download/terms_and_conditions.html).
